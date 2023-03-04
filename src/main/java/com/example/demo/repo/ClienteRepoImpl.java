@@ -1,12 +1,16 @@
 package com.example.demo.repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.repo.modelo.Cliente;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 
+@Repository
+@Transactional
 public class ClienteRepoImpl implements IClienteRepo {
 
 	@Autowired
