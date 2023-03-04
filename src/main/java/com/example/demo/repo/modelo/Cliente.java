@@ -38,5 +38,6 @@ public class Cliente {
 	private String tipo;
 	
 	//aksjfxkjcv
+
 	
 }
