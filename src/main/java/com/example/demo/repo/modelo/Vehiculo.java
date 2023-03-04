@@ -29,7 +29,7 @@ public class Vehiculo {
 	
 	
 	@Column(name = "vehi_año")
-	private String año;
+	private String anio;
 	
 	@Column(name = "vehi_pais")
 	private String pais;
@@ -72,12 +72,12 @@ public class Vehiculo {
 		this.marca = marca;
 	}
 
-	public String getAño() {
-		return año;
+	public String getAnio() {
+		return anio;
 	}
 
-	public void setAño(String año) {
-		this.año = año;
+	public void setAnio(String anio) {
+		this.anio = anio;
 	}
 
 	public String getPais() {
@@ -123,7 +123,7 @@ public class Vehiculo {
 
 	@Override
 	public String toString() {
-		return "Vehiculo [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", año=" + año
+		return "Vehiculo [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", año=" + anio
 				+ ", pais=" + pais + ", cilindraje=" + cilindraje + ", avaluo=" + avaluo + ", valorDia=" + valorDia
 				+ "]";
 	}

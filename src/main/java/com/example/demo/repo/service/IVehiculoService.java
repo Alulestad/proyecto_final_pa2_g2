@@ -12,4 +12,6 @@ public interface IVehiculoService {
 	public void eliminar(String placa);
 	public void actualizar(Vehiculo vehiculo);
 	public Vehiculo buscarPorPlaca(String placa);
+	
+	public List<Vehiculo> buscarTodos();
 }

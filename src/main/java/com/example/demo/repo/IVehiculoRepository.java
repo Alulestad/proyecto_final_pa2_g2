@@ -13,4 +13,6 @@ public interface IVehiculoRepository {
 	public void actualizar(Vehiculo vehiculo);
 	public Vehiculo buscarPorPlaca(String placa);
 	
+	public List<Vehiculo> buscarTodos();
+	
 }

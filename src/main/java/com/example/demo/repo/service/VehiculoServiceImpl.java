@@ -44,4 +44,10 @@ public class VehiculoServiceImpl implements IVehiculoService{
 		return this.iVehiculoRepository.buscarPorPlaca(placa);
 	}
 
+	@Override
+	public List<Vehiculo> buscarTodos() {
+		// TODO Auto-generated method stub
+		return this.iVehiculoRepository.buscarTodos();
+	}
+
 }
