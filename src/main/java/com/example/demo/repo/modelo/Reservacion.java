@@ -44,7 +44,7 @@ public class Reservacion {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "clie_id_cliente")
+	@JoinColumn(name = "rese_id_cliente")
 	private Cliente cliente;
 
 	@Override
