@@ -16,17 +16,7 @@
 
 	<table class="table table-success table-striped">
 		<thead>
-			<tr>
-			<td>Buscar por marca:</td>
-			<td><input type="text" ></td>
-			<td>	
-					
-			<form action="#" th:action="@{/vehiculos/buscarFiltrados/{marca}(marca=${Toyota})}" th:object="${vehiculo}"
-						th:method="GET">
-						<input class="btn btn-info" type="submit" value="Buscar">
-						</td>
-					</form>
-			</tr>
+		
 			<tr>
 				<th>Placa</th>
 				<th>Modelo</th>
@@ -71,6 +61,7 @@
 	<div>
 		<a th:href="@{/vehiculos/nuevoVehiculo}" class="btn btn-info">Agregar
 			nuevo Vehículo</a>
+		<a th:href="@{/vehiculos/buscar}" class="btn btn-info">Regresar</a>	
 	</div>
 
 </body>

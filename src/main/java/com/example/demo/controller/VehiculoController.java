@@ -26,7 +26,15 @@ public class VehiculoController {
 	public String buscarTodos(Model modelo) {
 		List<Vehiculo> lista = this.iVehiculoService.buscarTodos();
 		modelo.addAttribute("vehiculos", lista);
-		return "vistaListaVehiculos";
+		return "vistaListaVehiculosEmpleados";
+	}
+	
+	@GetMapping("/buscarFiltrados")
+	public String buscarPorMarca(@PathVariable("marcaVehiculo") String marca,Model modelo) {
+		List<Vehiculo> lista = this.iVehiculoService.buscarPorMarca(marca);
+		modelo.addAttribute("vehiculos", lista);
+		System.out.println("Listo!");
+		return "vistaListaVehiFiltradosEmpleados";
 	}
 	
 	//El id del vehiculo es su placa
@@ -35,7 +43,7 @@ public class VehiculoController {
 		System.out.println("El ID:" + placa);
 		Vehiculo vehi = this.iVehiculoService.buscarPorPlaca(placa);
 		modelo.addAttribute("vehiculo", vehi);
-		return "vistaVehiculo";
+		return "vistaVehiculoActualizar";
 	}
 
 	@PutMapping("/actualizar/{placaVehiculo}")
@@ -47,7 +55,7 @@ public class VehiculoController {
 	}
 
 	@DeleteMapping("/borrar/{placaVehiculo}")
-	public String borrarVehicuo(@PathVariable("placaVehiculo") String placa) {
+	public String borrarVehiculo(@PathVariable("placaVehiculo") String placa) {
 		this.iVehiculoService.eliminar(placa);
 		return "redirect:/vehiculos/buscar";
 	}
@@ -57,11 +65,18 @@ public class VehiculoController {
 		this.iVehiculoService.insertar(vehiculo);
 		return "redirect:/vehiculos/buscar";
 	}
+	@GetMapping("/visualizar/{placaVehiculo}")
+	public String visualizar(@PathVariable("placaVehiculo") String placa, Model modelo) {
+		System.out.println("El ID:" + placa);
+		Vehiculo vehi = this.iVehiculoService.buscarPorPlaca(placa);
+		modelo.addAttribute("vehiculo", vehi);
+		return "vistaVehiculo";
+	}
 
 	// Metodos de redireccionamientos a paginas
 	@GetMapping("/nuevoVehiculo")
 	public String paginaNuevoVehiculo(Vehiculo vehiculo) {
-		return "vistaNuevoVehiculoEmpleado";
+		return "vistaNuevoVehiculoEmpleados";
 		
 	}
 }
