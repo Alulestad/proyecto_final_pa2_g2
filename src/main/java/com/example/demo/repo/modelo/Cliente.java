@@ -34,6 +34,8 @@ public class Cliente {
 	private String usuario;
 	@Column(name = "clie_contrasenia")
 	private String contrasenia;
-	//Comentario
+	
+	
+	//adfjnakjbakj
 	
 }
