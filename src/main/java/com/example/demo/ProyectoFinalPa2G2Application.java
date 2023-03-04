@@ -2,7 +2,6 @@ package com.example.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,11 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 	
 	private static final Logger LOG=LoggerFactory.getLogger(ProyectoFinalPa2G2Application.class);
 	
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoFinalPa2G2Application.class, args);
 	}
+
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -45,5 +46,6 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		
 		
 	}
+
 
 }

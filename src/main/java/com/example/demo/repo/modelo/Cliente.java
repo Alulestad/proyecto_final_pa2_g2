@@ -37,7 +37,6 @@ public class Cliente {
 	@Column(name = "clie_tipo")
 	private String tipo;
 	
-	//aksjfxkjcv
 
 	
 }
