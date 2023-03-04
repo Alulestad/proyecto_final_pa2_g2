@@ -1,18 +1,22 @@
 package com.example.demo.repo.modelo;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "persona")
-public class Empleado {
+public class Persona {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "per_empleado")
@@ -101,11 +105,6 @@ public class Empleado {
 		return "Empleado [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
 				+ ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", registro=" + registro + "]";
 	}
-	
-	
-
-	
-	
 	
 	
 	

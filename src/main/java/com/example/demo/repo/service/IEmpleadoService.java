@@ -1,19 +1,23 @@
 package com.example.demo.repo.service;
 
-import com.example.demo.repo.modelo.Empleado;
+import java.util.List;
+
+import com.example.demo.repo.modelo.Persona;
 
 public interface IEmpleadoService {
 	
-	public Empleado buscarEmpleadoId(Integer id);
+	public Persona buscarEmpleadoId(Integer id);
 
-	public Empleado buscarEmpleadoCedula(String cedula);
+	public Persona buscarEmpleadoCedula(String cedula);
 
-	public void eliminarEmpleadoId(Integer id);
+	public void borrarEmpleadoId(Integer id);
 
-	public void eliminarEmpleadoCedula(String cedula);
+	public void borrarEmpleadoCedula(String cedula);
 
-	public void insertarEmpleado(Empleado empleado);
+	public void registrarEmpleado(Persona empleado);
 
-	public void actualizarEmpleado(Empleado empleado);
+	public void actualizarEmpleado(Persona empleado);
+	
+	public List<Persona> buscarEmpleados(String registro);
 
 }
