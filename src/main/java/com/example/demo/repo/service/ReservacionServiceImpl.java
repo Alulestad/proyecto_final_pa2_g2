@@ -1,0 +1,41 @@
+package com.example.demo.repo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.repo.IReservacionRepo;
+import com.example.demo.repo.modelo.Reservacion;
+
+@Service
+public class ReservacionServiceImpl implements IReservacionService {
+
+	@Autowired
+	private IReservacionRepo reservacionRepopl;
+	@Override
+	public Reservacion buscarReservacionPl(String placa) {
+		// TODO Auto-generated method stub
+		return this.reservacionRepopl.buscarReservacionPl(placa);
+	}
+
+	@Override
+	public void eliminarReservacionPl(String placa) {
+		// TODO Auto-generated method stub
+		this.reservacionRepopl.eliminarReservacionPl(placa);
+		
+	}
+
+	@Override
+	public void insertarReservacionPl(Reservacion reservacion) {
+		// TODO Auto-generated method stub
+		this.reservacionRepopl.insertarReservacionPl(reservacion);
+		
+	}
+
+	@Override
+	public void actualizarReservacionPl(Reservacion reservacion) {
+		// TODO Auto-generated method stub
+		this.reservacionRepopl.actualizarReservacionPl(reservacion);
+		
+	}
+
+}
