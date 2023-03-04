@@ -1,43 +1,64 @@
 package com.example.demo.repo;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.demo.repo.modelo.Empleado;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
+
+@Repository
+@Transactional
 public class EmpleadoRepoImpl implements IEmpleadoRepo {
 
+	@PersistenceContext
+	private EntityManager entityManager;
+	
 	@Override
 	public Empleado buscarEmpleadoId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Empleado empleado= this.entityManager.find(Empleado.class, id);
+		
+		return empleado;
 	}
 
 	@Override
 	public Empleado buscarEmpleadoCedula(String cedula) {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Empleado> query=this.entityManager.createQuery("select e from Empleado e where e.cedula:=datoCedula",Empleado.class);
+		query.setParameter("datoCedula",cedula);
+		
+		
+		return query.getSingleResult();
 	}
 
 	@Override
 	public void eliminarEmpleadoId(Integer id) {
-		// TODO Auto-generated method stub
-
+		Empleado empleado= this.entityManager.find(Empleado.class, id);
+		
+		this.entityManager.remove(empleado);
 	}
 
 	@Override
 	public void eliminarEmpleadoCedula(String cedula) {
-		// TODO Auto-generated method stub
-
+		TypedQuery<Empleado> query=this.entityManager.createQuery("select e from Empleado e where e.cedula:=datoCedula",Empleado.class);
+		query.setParameter("datoCedula",cedula);
+		
+		Empleado empleado=query.getSingleResult();
+		this.entityManager.remove(empleado);
 	}
 
 	@Override
 	public void insertarEmpleado(Empleado empleado) {
-		// TODO Auto-generated method stub
+		this.entityManager.persist(empleado);
 
 	}
 
 	@Override
 	public void actualizarEmpleado(Empleado empleado) {
-		// TODO Auto-generated method stub
-
+		
+		this.entityManager.merge(empleado);
+		
 	}
 
 }
