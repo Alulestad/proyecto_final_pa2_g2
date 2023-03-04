@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -33,6 +35,9 @@ public class Cobro {
 	private LocalDateTime fecha;
 	
 	
+	@OneToOne
+	@JoinColumn(name = "cobr_id_reservacion")
+	private Reservacion reservacion;
 	
 	public Integer getId() {
 		return Id;

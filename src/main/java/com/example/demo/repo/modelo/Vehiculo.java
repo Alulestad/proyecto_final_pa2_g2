@@ -1,12 +1,14 @@
 package com.example.demo.repo.modelo;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 import jakarta.persistence.Table;
@@ -14,40 +16,38 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "vehiculo")
 public class Vehiculo {
-	
-
 
 	@Id
 	@Column(name = "vehi_placa")
 	private String placa;
-	
-	
+
 	@Column(name = "vehi_modelo")
 	private String modelo;
-	
+
 	@Column(name = "vehi_marca")
 	private String marca;
-	
-	
+
 	@Column(name = "vehi_año")
 	private String año;
-	
+
 	@Column(name = "vehi_pais")
 	private String pais;
-	
+
 	@Column(name = "vehi_cilindraje")
 	private Double cilindraje;
-	
+
 	@Column(name = "vehi_avaluo")
 	private BigDecimal avaluo;
-	
+
 	@Column(name = "vehi_estado")
 	private String estado;
 
 	@Column(name = "vehi_valor_dia")
 	private BigDecimal valorDia;
 	
-
+	
+	@OneToMany(mappedBy = "vehiculo")
+	private List<Reservacion> reservaciones;
 
 	public String getPlaca() {
 		return placa;
@@ -113,7 +113,6 @@ public class Vehiculo {
 		this.valorDia = valorDia;
 	}
 
-	
 	public String getEstado() {
 		return estado;
 	}
@@ -124,13 +123,8 @@ public class Vehiculo {
 
 	@Override
 	public String toString() {
-		return "Vehiculo [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", año=" + año
-				+ ", pais=" + pais + ", cilindraje=" + cilindraje + ", avaluo=" + avaluo + ", valorDia=" + valorDia
-				+ "]";
+		return "Vehiculo [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", año=" + año + ", pais="
+				+ pais + ", cilindraje=" + cilindraje + ", avaluo=" + avaluo + ", valorDia=" + valorDia + "]";
 	}
-	
-	
-	
-	
 
 }
