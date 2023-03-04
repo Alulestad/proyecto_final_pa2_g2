@@ -13,22 +13,14 @@ import com.example.demo.repo.service.IVehiculoService;
 import com.example.demo.repo.modelo.Cobro;
 import com.example.demo.repo.service.ICobroService;
 
-@SpringBootApplication
-public class ProyectoFinalPa2G2Application implements CommandLineRunner{
-	
-	@Autowired
-	private ICobroService cobroService;
-	
-	private static final Logger LOG=LoggerFactory.getLogger(ProyectoFinalPa2G2Application.class);
-	
-
-
-
 
 @SpringBootApplication
 public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 	//public class ProyectoFinalPa2G2Application{
+	@Autowired
+	private ICobroService cobroService;
 	
+	private static final Logger LOG=LoggerFactory.getLogger(ProyectoFinalPa2G2Application.class);
 	@Autowired 
 	private IVehiculoService iVehiculoService;
 	
@@ -78,11 +70,11 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		//this.iVehiculoService.insertar(vehi3);
 		
 		
-		this.iVehiculoService.buscarPorMarca("KIA");
+		//this.iVehiculoService.buscarPorMarca("KIA");
 		
-		this.iVehiculoService.eliminar("PFQ-0445");
+		//this.iVehiculoService.eliminar("PFQ-0445");
 		vehi2.setAño("2020");
-		this.iVehiculoService.actualizar(vehi2);
+		//this.iVehiculoService.actualizar(vehi2);
 		
 
 		
