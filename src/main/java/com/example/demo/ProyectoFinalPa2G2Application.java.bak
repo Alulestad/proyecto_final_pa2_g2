@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.demo.repo.modelo.Vehiculo;
 import com.example.demo.repo.service.IVehiculoService;
+
 import com.example.demo.repo.modelo.Cobro;
 import com.example.demo.repo.service.ICobroService;
 

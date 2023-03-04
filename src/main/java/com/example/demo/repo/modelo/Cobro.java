@@ -77,6 +77,6 @@ public class Cobro {
 				+ ", valorIva=" + valorIva + ", valorTotal=" + valorTotal + ", fecha=" + fecha + "]";
 	}
 	
-	
+
 
 }
