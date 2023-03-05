@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,11 +31,12 @@ public class VehiculoController {
 	}
 	
 	@GetMapping("/buscarFiltrados")
-	public String buscarPorMarca(@PathVariable("marcaVehiculo") String marca,Model modelo) {
+	public String buscarPorMarca(Model modelo, @Param("marca") String marca) {
 		List<Vehiculo> lista = this.iVehiculoService.buscarPorMarca(marca);
 		modelo.addAttribute("vehiculos", lista);
+		modelo.addAttribute("marca", marca);
 		System.out.println("Listo!");
-		return "vistaListaVehiFiltradosEmpleados";
+		return "vistaListaVehiculosEmpleados";
 	}
 	
 	//El id del vehiculo es su placa

@@ -17,15 +17,18 @@
 	<table class="table table-success table-striped">
 		<thead>
 			<tr>
-			<td>Buscar por marca:</td>
-			<td><input type="text" ></td>
-			<td>	
-					
-			<form action="#" th:action="@{/vehiculos/buscarFiltrados/{marca}(marca=${Toyota})}" th:object="${vehiculo}"
-						th:method="GET">
-						<input class="btn btn-info" type="submit" value="Buscar">
-						</td>
-					</form>
+			<form th:action="@{/vehiculos/buscarFiltrados}">
+			<div >
+				<label> Marca: </label>
+			</div>
+			<div>
+				<input type="text" name="marca" class="form-control" id="marca" th:value="${marca}"
+					placeholder="Ingrese marca" required>
+			</div>
+			<div>
+				<input type="submit" value="Buscar">
+			</div>	
+			</form>
 			</tr>
 			<tr>
 				<th>Placa</th>
