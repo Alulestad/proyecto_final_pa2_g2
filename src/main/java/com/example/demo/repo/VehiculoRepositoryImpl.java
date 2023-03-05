@@ -6,12 +6,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+
 import com.example.demo.repo.modelo.Cliente;
+
 import com.example.demo.repo.modelo.Vehiculo;
 
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -33,8 +36,19 @@ public class VehiculoRepositoryImpl implements IVehiculoRepository{
 	}
 
 	@Override
+	public List<Vehiculo> buscarPorMarca(String marca) {
+		// TODO Auto-generated method stub
+		TypedQuery<Vehiculo> myQuery = this.entityManager.createQuery("SELECT v FROM Vehiculo v where v.marca=:datoMarca", Vehiculo.class);
+		myQuery.setParameter("datoMarca", marca);
+		return myQuery.getResultList();
+	
+	
+	}
+	
+	@Override
 	public List<Vehiculo> buscarPorMarca_y_modelo(String marca,String modelo) {
 		// TODO Auto-generated method stub
+
 		CriteriaBuilder criteriaBuilder=this.entityManager.getCriteriaBuilder();
 		
 		CriteriaQuery<Vehiculo> criteriaQuery=criteriaBuilder.createQuery(Vehiculo.class);
@@ -56,7 +70,10 @@ public class VehiculoRepositoryImpl implements IVehiculoRepository{
 		
 		TypedQuery<Vehiculo> myQuery=this.entityManager.createQuery(criteriaQuery);
 		
+
 		return myQuery.getResultList();
+	
+	
 	}
 
 	@Override
@@ -80,6 +97,7 @@ public class VehiculoRepositoryImpl implements IVehiculoRepository{
 
 	@Override
 	public List<Vehiculo> buscarTodos() {
+
 		TypedQuery<Vehiculo> myQuery = this.entityManager.createQuery("SELECT v FROM Vehiculo v", Vehiculo.class);
 		return myQuery.getResultList();
 	}

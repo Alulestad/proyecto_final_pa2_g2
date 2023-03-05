@@ -50,6 +50,7 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		vehiculos.forEach(System.out::println);
 		
 		System.out.println("Vehiculo por placa: "+this.iVehiculoService.buscarPorPlaca("abc-132"));
+
 		
 	}
 

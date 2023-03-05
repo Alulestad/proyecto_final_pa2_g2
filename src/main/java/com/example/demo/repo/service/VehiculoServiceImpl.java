@@ -54,5 +54,17 @@ public class VehiculoServiceImpl implements IVehiculoService{
 		
 		return false;
 	}
+	
+	@Override
+	public List<Vehiculo> buscarPorMarca(String marca) {
+		// TODO Auto-generated method stub
+		return this.iVehiculoRepository.buscarPorMarca(marca);
+	}
+
+	@Override
+	public List<Vehiculo> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

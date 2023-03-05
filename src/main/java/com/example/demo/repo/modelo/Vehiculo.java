@@ -73,11 +73,13 @@ public class Vehiculo {
 		this.marca = marca;
 	}
 
-	public String getAño() {
+
+	public String getAnio() {
 		return anio;
 	}
 
-	public void setAño(String anio) {
+	public void setAnio(String anio) {
+
 		this.anio = anio;
 	}
 
@@ -125,6 +127,7 @@ public class Vehiculo {
 	public String toString() {
 		return "Vehiculo [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", año=" + anio + ", pais="
 				+ pais + ", cilindraje=" + cilindraje + ", avaluo=" + avaluo + ", valorDia=" + valorDia + "]";
+
 	}
 
 }

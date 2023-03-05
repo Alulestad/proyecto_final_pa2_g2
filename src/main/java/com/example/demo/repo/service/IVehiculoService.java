@@ -14,4 +14,8 @@ public interface IVehiculoService {
 	public void actualizar(Vehiculo vehiculo);
 	public Vehiculo buscarPorPlaca(String placa);
 	public boolean reservar(String placa, String cedula,LocalDateTime inicio, LocalDateTime final_);
+	
+	public List<Vehiculo> buscarTodos();
+	
+	public List<Vehiculo> buscarPorMarca(String marca);
 }
