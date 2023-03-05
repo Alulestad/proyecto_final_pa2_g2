@@ -1,5 +1,7 @@
 package com.example.demo.repo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,18 @@ public class ClienteServiceImpl implements IClienteService {
 	public void borrar(String cedula) {
 		// TODO Auto-generated method stub
 		this.clienteRepo.eliminar(cedula);
+	}
+
+	@Override
+	public Cliente buscarPorUsuario_contrasenia(String usuario, String contrasenia) {
+		// TODO Auto-generated method stub
+		return clienteRepo.buscarPorUsuario_contrasenia(usuario, contrasenia);
+	}
+
+	@Override
+	public List<Cliente> buscarPorApellido(String apellido) {
+		// TODO Auto-generated method stub
+		return this.clienteRepo.buscarPorApellido(apellido);
 	}
 
 }

@@ -8,7 +8,8 @@ public interface IVehiculoRepository {
 
 	//Crud
 	public void insertar(Vehiculo vehiculo);
-	public List<Vehiculo> buscarPorMarca(String marca);
+	public List<Vehiculo> buscarPorMarca_y_modelo(String marca,String modelo);
+	public List<Vehiculo> buscarTodos();
 	public void eliminar(String placa);
 	public void actualizar(Vehiculo vehiculo);
 	public Vehiculo buscarPorPlaca(String placa);

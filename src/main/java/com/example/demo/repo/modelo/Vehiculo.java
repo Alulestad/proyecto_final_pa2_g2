@@ -27,8 +27,8 @@ public class Vehiculo {
 	@Column(name = "vehi_marca")
 	private String marca;
 
-	@Column(name = "vehi_año")
-	private String año;
+	@Column(name = "vehi_anio")
+	private String anio;
 
 	@Column(name = "vehi_pais")
 	private String pais;
@@ -74,11 +74,11 @@ public class Vehiculo {
 	}
 
 	public String getAño() {
-		return año;
+		return anio;
 	}
 
-	public void setAño(String año) {
-		this.año = año;
+	public void setAño(String anio) {
+		this.anio = anio;
 	}
 
 	public String getPais() {
@@ -123,7 +123,7 @@ public class Vehiculo {
 
 	@Override
 	public String toString() {
-		return "Vehiculo [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", año=" + año + ", pais="
+		return "Vehiculo [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", año=" + anio + ", pais="
 				+ pais + ", cilindraje=" + cilindraje + ", avaluo=" + avaluo + ", valorDia=" + valorDia + "]";
 	}
 
