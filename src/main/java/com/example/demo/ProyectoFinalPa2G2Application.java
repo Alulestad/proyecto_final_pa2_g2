@@ -14,8 +14,10 @@ import com.example.demo.repo.modelo.Vehiculo;
 import com.example.demo.repo.service.IVehiculoService;
 import com.example.demo.repo.modelo.Cliente;
 import com.example.demo.repo.modelo.Cobro;
+import com.example.demo.repo.modelo.Reservacion;
 import com.example.demo.repo.service.IClienteService;
 import com.example.demo.repo.service.ICobroService;
+import com.example.demo.repo.service.IReservacionService;
 
 
 @SpringBootApplication
@@ -27,6 +29,9 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 	private IVehiculoService iVehiculoService;
 	@Autowired
 	private IClienteService clienteService;
+	
+	@Autowired 
+	private IReservacionService iReservacionServicePL;
 	
 	private static final Logger LOG=LoggerFactory.getLogger(ProyectoFinalPa2G2Application.class);
 	
@@ -51,6 +56,14 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		
 		System.out.println("Vehiculo por placa: "+this.iVehiculoService.buscarPorPlaca("abc-132"));
 
+		
+		
+		//Reporte R
+		
+		List<Reservacion>reservaciones = this.iReservacionServicePL.fechaReservas(LocalDateTime.now()  , LocalDateTime.now());
+		reservaciones.forEach(System.out::println);
+		System.out.println("Reservacion por fecha:"+this.iReservacionServicePL.buscarReservacionPl("abc-132"));
+		
 		
 	}
 

@@ -2,6 +2,7 @@ package com.example.demo.repo.modelo;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,13 +40,15 @@ public class Reservacion {
 	@JoinColumn(name = "rese_id_vehiculo")
 	private Vehiculo vehiculo;
 	
-	@OneToOne(mappedBy = "reservacion")
+	@OneToOne(mappedBy = "reservacion", cascade = CascadeType.ALL)
 	private Cobro cobro;
 	
 	
 	@ManyToOne
 	@JoinColumn(name = "rese_id_cliente")
 	private Cliente cliente;
+	
+	
 
 	@Override
 	public String toString() {
