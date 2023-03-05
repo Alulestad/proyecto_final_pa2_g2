@@ -37,9 +37,10 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
+		/*
 		
-		LOG.info("Cliente: "+clienteService.buscarPorUsuario_contrasenia("user", "admin"));
+		LOG.warn("Cliente: "+clienteService.buscarPorUsuario_contrasenia("user", "admin"));
+		LOG.warn("Cliente: "+clienteService.buscarPorUsuario_contrasenia("usr", "admin"));
 		
 		List<Cliente> clientes=this.clienteService.buscarPorApellido("Arias");
 		
@@ -50,7 +51,8 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		vehiculos.forEach(System.out::println);
 		
 		System.out.println("Vehiculo por placa: "+this.iVehiculoService.buscarPorPlaca("abc-132"));
-
+		
+		*/
 		
 	}
 

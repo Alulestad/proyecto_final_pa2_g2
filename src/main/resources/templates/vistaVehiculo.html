@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<form th:action="@{/vehiculos/visualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}" th:method="GET">
+	<form th:action="@{/principal/vehiculos/visualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}" th:method="GET">
 		<table>
 			<tr>
 				<td><label>Placa:</label></td>
@@ -51,7 +51,7 @@
 		
 		</table>
 			<div>
-			<a th:href="@{/vehiculos/buscar}" class="btn btn-info">Regresar</a>	
+			<a th:href="@{/principal/vehiculos/buscar}" class="btn btn-info">Regresar</a>	
 	</div>
 	
 	</form>

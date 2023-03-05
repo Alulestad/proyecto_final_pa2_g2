@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<form th:action="@{/vehiculos/actualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}" th:method="PUT">
+	<form th:action="@{/principal/vehiculos/actualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}" th:method="PUT">
 		<table>
 			<tr>
 				<td><label>Placa:</label></td>

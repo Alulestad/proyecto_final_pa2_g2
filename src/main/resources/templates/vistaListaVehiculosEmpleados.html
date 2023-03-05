@@ -17,7 +17,7 @@
 	<table class="table table-success table-striped">
 		<thead>
 			<tr>
-			<form th:action="@{/vehiculos/buscarFiltrados}">
+			<form th:action="@{/principal/vehiculos/buscarFiltrados}">
 			<div >
 				<label> Marca: </label>
 			</div>
@@ -51,19 +51,19 @@
 				<td th:text="${vehiculo.estado}"></td>
 				<td th:text="${vehiculo.valorDia}"></td>
 				<td>
-					<form action="#" th:action="@{/vehiculos/visualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
+					<form action="#" th:action="@{/principal/vehiculos/visualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
 						th:method="GET">
 						<input type="submit" value="Visualizar">
 					</form>
 				</td>
 				<td>
-					<form action="#" th:action="@{/vehiculos/buscarUno/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
+					<form action="#" th:action="@{/principal/vehiculos/buscarUno/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
 						th:method="GET">
 						<input type="submit" value="Editar">
 					</form>
 				</td>
 				<td>
-					<form action="#" th:action="@{/vehiculos/borrar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
+					<form action="#" th:action="@{/principal/vehiculos/borrar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
 						th:method="DELETE">
 						<input type="submit" value="Borrar">
 					</form>
@@ -72,7 +72,7 @@
 		</tbody>
 	</table>
 	<div>
-		<a th:href="@{/vehiculos/nuevoVehiculo}" class="btn btn-info">Agregar
+		<a th:href="@{/principal/vehiculos/nuevoVehiculo}" class="btn btn-info">Agregar
 			nuevo Vehículo</a>
 	</div>
 

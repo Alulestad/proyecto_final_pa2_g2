@@ -40,8 +40,11 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Override
 	public Cliente buscarPorUsuario_contrasenia(String usuario, String contrasenia) {
-		// TODO Auto-generated method stub
-		return clienteRepo.buscarPorUsuario_contrasenia(usuario, contrasenia);
+		try {
+			return clienteRepo.buscarPorUsuario_contrasenia(usuario, contrasenia);
+		}catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
