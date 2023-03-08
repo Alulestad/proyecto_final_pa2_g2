@@ -24,5 +24,6 @@ public class MenuController {
 		return "vistaMenuCliente";
 		
 	}
+	
 
 }
