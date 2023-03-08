@@ -94,4 +94,30 @@ public class Reservacion {
 		this.fechaFin = fechaFin;
 	}
 
+	public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+	}
+
+	public Cobro getCobro() {
+		return cobro;
+	}
+
+	public void setCobro(Cobro cobro) {
+		this.cobro = cobro;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	
+
 }

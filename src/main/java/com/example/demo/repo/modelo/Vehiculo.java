@@ -122,6 +122,16 @@ public class Vehiculo {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	
+
+	public List<Reservacion> getReservaciones() {
+		return reservaciones;
+	}
+
+	public void setReservaciones(List<Reservacion> reservaciones) {
+		this.reservaciones = reservaciones;
+	}
 
 	@Override
 	public String toString() {

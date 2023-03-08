@@ -14,4 +14,6 @@ public interface IReservacionService {
 	public void insertarReservacionPl(Reservacion reservacion);
 	public void actualizarReservacionPl(Reservacion reservacion);
 
+	public boolean verificarDisponibilidad(String placa, LocalDateTime fechaInicio, LocalDateTime fechaFin);
+	
 }
