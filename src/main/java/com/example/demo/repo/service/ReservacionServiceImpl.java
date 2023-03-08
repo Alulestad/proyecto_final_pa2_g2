@@ -1,5 +1,8 @@
 package com.example.demo.repo.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,4 +41,12 @@ public class ReservacionServiceImpl implements IReservacionService {
 		
 	}
 
+	@Override
+	public List<Reservacion> buscarReservacionPorFecha(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+		// TODO Auto-generated method stub
+		return this.reservacionRepopl.buscarReservacionPorFecha(fechaInicio, fechaFin);
+	}
+
+	
+	
 }
