@@ -65,4 +65,10 @@ public class ClienteServiceImpl implements IClienteService {
 		return this.clienteRepo.buscarPorApellido(apellido);
 	}
 
+	@Override
+	public List<Cliente> buscarTodos2() {
+		// TODO Auto-generated method stub
+		return this.clienteRepo.buscarTodos2();
+	}
+
 }

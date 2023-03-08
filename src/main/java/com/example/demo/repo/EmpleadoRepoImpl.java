@@ -2,6 +2,7 @@ package com.example.demo.repo;
 
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.repo.modelo.Cliente;
 import com.example.demo.repo.modelo.Empleado;
 
 import jakarta.persistence.EntityManager;
@@ -59,6 +60,17 @@ public class EmpleadoRepoImpl implements IEmpleadoRepo {
 		
 		this.entityManager.merge(empleado);
 		
+	}
+
+	@Override
+	public Empleado buscarPorUsuario_contrasenia(String usuario, String contrasenia) {
+		// TODO Auto-generated method stub
+		TypedQuery<Empleado> query=this.entityManager.createQuery("select e from Empleado e "
+				+ "where e.usuario=:datoUsuario and e.contrasenia=:datoContasenia",Empleado.class);
+		query.setParameter("datoUsuario", usuario);
+		query.setParameter("datoContasenia", contrasenia);
+		
+		return query.getSingleResult();
 	}
 
 }

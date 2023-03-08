@@ -22,4 +22,7 @@ public interface IClienteRepo {
 	public void eliminar(String cedula);
 	
 	public List<Cliente> buscarTodos();
+	
+	//Para la vista de empleado
+	public List<Cliente> buscarTodos2();
 }

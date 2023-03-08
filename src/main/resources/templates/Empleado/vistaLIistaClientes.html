@@ -17,13 +17,13 @@
 	<table class="table table-success table-striped">
 		<thead>
 			<tr>
-			<form th:action="@{/empleados/vehiculo/buscarFiltrados}">
+			<form th:action="@{empleados/cliente/buscarFiltrados}">
 			<div >
-				<label> Marca: </label>
+				<label> Apellido: </label>
 			</div>
 			<div>
-				<input type="text" name="marca" class="form-control" id="marca" th:value="${marca}"
-					placeholder="Ingrese marca" required>
+				<input type="text" name="apellido" class="form-control" id="apellido" th:value="${apellido}"
+					placeholder="Ingrese el apellido" required>
 			</div>
 			<div>
 				<input type="submit" value="Buscar">
@@ -31,39 +31,45 @@
 			</form>
 			</tr>
 			<tr>
-				<th>Placa</th>
-				<th>Modelo</th>
-				<th>Marca</th>
-				<th>Año</th>
-				<th>Estado</th>
-				<th>Valor Diario</th>
+				<th>Cédula</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>F.Nacimiento</th>
+				<th>Género</th>
+				<th>Registro</th>
+				<th>Usuario</th>
+				<th>Contraseña</th>
+				<th>Tipo</th>
 				<th>Acción</th>
 				<th> </th>
 				<th> </th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="vehiculo:${vehiculos}">
-				<td th:text="${vehiculo.placa}"></td>
-				<td th:text="${vehiculo.modelo}"></td>
-				<td th:text="${vehiculo.marca}"></td>
-				<td th:text="${vehiculo.anio}"></td>
-				<td th:text="${vehiculo.estado}"></td>
-				<td th:text="${vehiculo.valorDia}"></td>
+			<tr th:each="clientes:${clientes}">
+				<td th:text="${cliente.cedula}"></td>
+				<td th:text="${cliente.nombre}"></td>
+				<td th:text="${cliente.apellido}"></td>
+				<td th:text="${cliente.fechaNacimiento}"></td>
+				<td th:text="${cliente.genero}"></td>
+				<td th:text="${cliente.registro}"></td>
+				<td th:text="${cliente.usuario}"></td>
+				<td th:text="${cliente.contrasenia}"></td>
+				<td th:text="${cliente.tipo}"></td>
 				<td>
-					<form action="#" th:action="@{/vehiculo/visualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
+					<form action="#" th:action="@{/cliente/visualizar/{cedula}(cedula=${cliente.cedula})}" th:object="${cliente}"
 						th:method="GET">
 						<input type="submit" value="Visualizar">
 					</form>
 				</td>
 				<td>
-					<form action="#" th:action="@{/vehiculo/buscarUno/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
+					<form action="#" th:action="@{cliente/buscarUno/{cedula}(cedula=${cliente.cedula})}" th:object="${cliente}"
 						th:method="GET">
 						<input type="submit" value="Editar">
 					</form>
 				</td>
 				<td>
-					<form action="#" th:action="@{/vehiculo/borrar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}"
+					<form action="#" th:action="@{/cliente/borrar/{cedula}(cedula=${vehiculo.cedula})}" th:object="${cedula}"
 						th:method="DELETE">
 						<input type="submit" value="Borrar">
 					</form>
@@ -72,8 +78,8 @@
 		</tbody>
 	</table>
 	<div>
-		<a th:href="@{/vehiculo/nuevoVehiculo}" class="btn btn-info">Agregar
-			nuevo Vehículo</a>
+		<a th:href="@{cliente/nuevo}" class="btn btn-info">Agregar
+			nuevo Cliente</a>
 	</div>
 
 </body>

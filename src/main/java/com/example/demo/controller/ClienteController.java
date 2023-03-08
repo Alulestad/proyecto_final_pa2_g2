@@ -155,6 +155,7 @@ public class ClienteController {
 
 	@PostMapping("insertar")
 	public String insertarCliente(Cliente cliente) {
+		cliente.setRegistro("C");
 		this.clienteService.agregar(cliente);
 		return "Cliente/vistaInicioCliente";
 	}

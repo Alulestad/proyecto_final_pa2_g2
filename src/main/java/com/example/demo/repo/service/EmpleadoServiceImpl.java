@@ -168,4 +168,10 @@ List<Reservacion> reserva = this.iReservacionRepo.reporte(fechaInicio, fechaFin)
 		return this.iVehiculoRepository.buscarTodos();
 	}
 
+	@Override
+	public Empleado buscarPorUsuario_contrasenia(String usuario, String contrasenia) {
+		// TODO Auto-generated method stub
+		return this.empleadoRepo.buscarPorUsuario_contrasenia(usuario, contrasenia);
+	}
+
 }
