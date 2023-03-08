@@ -58,31 +58,7 @@ public class ClienteRepoImpl implements IClienteRepo {
 		query.setParameter("datoContasenia", contrasenia);
 		
 		return query.getSingleResult();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 
 	@Override
@@ -94,6 +70,16 @@ public class ClienteRepoImpl implements IClienteRepo {
 		
 		
 		return typedQuery.getResultList();
+	}
+
+	@Override
+	public List<Cliente> buscarTodos() {
+		// TODO Auto-generated method stub
+				TypedQuery<Cliente> query = this.entityManager.createQuery("SELECT c FROM Cliente c", Cliente.class);
+
+				List<Cliente> lista = query.getResultList();
+				lista.forEach(c -> c.getReservaciones().size());
+				return lista;
 	}
 
 }

@@ -16,4 +16,6 @@ public interface IClienteRepo {
 	public List<Cliente> buscarPorApellido(String apellido);
 
 	public void eliminar(String cedula);
+	
+	public List<Cliente> buscarTodos();
 }

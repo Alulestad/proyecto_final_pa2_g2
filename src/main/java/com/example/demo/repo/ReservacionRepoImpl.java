@@ -1,11 +1,16 @@
 package com.example.demo.repo;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repo.modelo.Reservacion;
+import com.example.demo.repo.modelo.Vehiculo;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 
@@ -49,5 +54,31 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 		Reservacion reservacion=this.entityMrese.find(Reservacion.class, id);
 		return reservacion;
 	}
+
+	@Override
+	public List<Reservacion> buscarPorVehiculo(Vehiculo vehiculo) {
+		TypedQuery<Reservacion> query = this.entityMrese
+				.createQuery("SELECT r FROM Reserva r WHERE r.vehiculo=:datoVehiculo", Reservacion.class);
+		query.setParameter("datoVehiculo", vehiculo);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Reservacion> reporte(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+		// TODO Auto-generated method stub
+				TypedQuery<Reservacion> query = this.entityMrese.createQuery(
+						"SELECT r FROM Reserva r WHERE r.fechaInicio>=:fechaInicio AND r.fechaFin<=:fechaFin", Reservacion.class);
+				query.setParameter("fechaInicio", fechaInicio);
+				query.setParameter("fechaFin", fechaFin);
+
+				List<Reservacion> lista = query.getResultList();
+				lista.stream().forEach(r -> {
+					r.getCliente().getCedula();
+					r.getVehiculo().getPlaca();
+				});
+				
+
+				return lista;
+			}
 
 }
