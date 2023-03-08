@@ -41,6 +41,7 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 	@Override
 	public void insertarReservacionPl(Reservacion reservacion) {
 		// TODO Auto-generated method stub
+		System.out.println("RESERVACION: "+reservacion);
 		this.entityMrese.persist(reservacion);
 		
 	}
@@ -131,10 +132,13 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 		List<Reservacion> myList=myQuery.getResultList();
 		
 		for (Reservacion r:myList) {
-			r.getCliente().getCedula();
+			if(r.getVehiculo()!=null){
+				r.getCliente().getCedula();
 			System.out.println("Cliente SQL: "+r.getCliente().getCedula());
 			r.getVehiculo().getPlaca();
 			System.out.println("Vehiculo SQL: "+r.getVehiculo().getPlaca());
+			}
+			
 		}
 		
 		
@@ -162,10 +166,12 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 				
 				
 				for (Reservacion r:lista) {
+					if(r.getVehiculo()!=null){
 					r.getCliente().getCedula();
 					System.out.println("Cliente: "+r.getCliente().getCedula());
 					r.getVehiculo().getPlaca();
 					System.out.println("Vehiculo: "+r.getVehiculo().getPlaca());
+					}
 				}
 
 				

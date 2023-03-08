@@ -85,7 +85,12 @@ public class ClienteController {
 	}
 
 	@PostMapping("/reservacion/insertar")
-	public String insertarReservacion(Reservacion reservacion,  @Param("placa") String placa,  @Param("cedula") String cedula,  @Param("fechaInicio") LocalDateTime fechaInicio,  @Param("fechaFin") LocalDateTime  fechaFin) {
+	public String insertarReservacion(Reservacion reservacion,  
+			@Param("placa") String placa,  
+			@Param("cedula") String cedula,  
+			@Param("fechaInicio") LocalDateTime fechaInicio,  
+			@Param("fechaFin") LocalDateTime  fechaFin,
+			Model model) {//Model puede que no haga falta
 		System.out.println("Placa: "+placa);
 		System.out.println("Placa: "+cedula);
 		Boolean disp=this.reservacionService.verificarDisponibilidad(placa, fechaInicio, fechaFin);
@@ -93,16 +98,55 @@ public class ClienteController {
 		//this.reservacionService.reservar(placa, cedula, fechaInicio, fechaFin);
 		System.out.println("DISPONIVLIDIDAD: "+disp);
 		if (disp) {
+			
+			reservacion.setCedula(cedula);
+			reservacion.setPlaca(placa);
+			reservacion.setFechaInicio(fechaInicio);
+			reservacion.setFechaFin(fechaFin);
+			model.addAttribute("reservacion1",reservacion);
 			return "Cliente/vistaPago";
 		}
-		return "Cliente/vistaPago";
+		
+		return "Cliente/vistaListaVehiculosClientes";
 		
 	}
 
 	@PostMapping("/reservacion/pago")
-	public String pagoReservacion(Cobro cobro, @Param("targeta") String targeta) {
+	public String pagoReservacion(Cobro cobro,
+			Reservacion reservac, 
+			@Param("targeta") String targeta,
+			@Param("placa") String placa,
+			@Param("cedula") String cedula,
+			@Param("fechaInicio") LocalDateTime fechaInicio,
+			@Param("fechaFin") LocalDateTime fechaFin) {
+		//NECESITO insertar reservacion y cobro
+		//
 		//this.cobroService.insertarCobro(targeta, null, null, null)
-		return "Cliente/vistaPago";
+		
+		Reservacion reservacionIns=new Reservacion();
+		reservacionIns.setPlaca(placa);
+		reservacionIns.setCedula(cedula);
+		reservacionIns.setEstado("R");
+		reservacionIns.setFechaFin(fechaFin);
+		reservacionIns.setFechaInicio(fechaInicio);
+		Cliente clienteEncontrado=this.clienteService.buscar(cedula);
+		reservacionIns.setCliente(clienteEncontrado);
+		this.reservacionService.insertarReservacionPl(reservacionIns);
+		
+		Vehiculo vehiculoEncontrado=this.iVehiculoService.buscarPorPlaca(placa);
+		
+		Cobro cobroIns=new Cobro();
+		cobroIns=this.cobroService.insertarCobro(targeta, 
+				vehiculoEncontrado.getValorDia(), 
+				fechaInicio,
+				fechaFin, 
+				reservacionIns.getId());
+		
+		//reservacionIns.setCobro(null);
+		
+		
+		
+		return "Cliente/vistaInicioCliente";
 
 	}
 

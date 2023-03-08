@@ -7,7 +7,7 @@ public interface ICobroRepo {
 	//CRUD
 	public Cobro buscarCobroId(Integer id);
 	public void eliminarCobroId(Integer id);
-	public void insertarCobro(Cobro cobro);
+	public Cobro insertarCobro(Cobro cobro);
 	public void actualizarCobro(Cobro cobro);
 	
 }

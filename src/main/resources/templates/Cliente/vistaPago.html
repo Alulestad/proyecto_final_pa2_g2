@@ -12,18 +12,53 @@
 
 <body>
 	<h1>¡Se registró con éxito! Procedamos con el pago:</h1>
-	<form th:action="@{reservacion/pago}" th:object="${cobro}" th:method="POST">
+	<form th:action="@{pago}" th:object="${cobro}" th:method="POST">
+
 
 		<table>
 			<thead>
 				<tr>
 					<!--form th:action="@{/clientes/vehiculo/buscarFiltrados}"-->
 					<div>
+						<label> Placa: </label>
+					</div>
+					<div>
+						<input type="text" name="placa" class="form-control" id="placa" th:value="${reservacion1.placa}"
+							placeholder="Ingrese la placa" readonly="readonly" required>
+					</div>
+					<div>
+						<label> Cédula: </label>
+					</div>
+					<div>
+						<input type="text" name="cedula" class="form-control" id="cedula"
+							th:value="${reservacion1.cedula}" placeholder="Ingrese su cédula" readonly="readonly"
+							required>
+					</div>
+					<div>
+						<label> Fecha de Inicio: </label>
+					</div>
+					<div>
+						<input type="datetime-local" name="fechaInicio" class="form-control" id="fechaInicio"
+							th:value="${reservacion1.fechaInicio}" readonly="readonly" required>
+					</div>
+					<div>
+						<label> Fecha de Fin: </label>
+					</div>
+					<div>
+						<input type="datetime-local" name="fechaFin" class="form-control" id="fechaFin"
+							th:value="${reservacion1.fechaFin}" readonly="readonly" required>
+					</div>
+				</tr>
+
+
+				<tr>
+					<!--form th:action="@{/clientes/vehiculo/buscarFiltrados}"-->
+					<div>
 						<label> Tarjeta: </label>
 					</div>
 					<div>
-						<input type="text" name="targeta" class="form-control" id="targetaCredito" th:value="${targetaCredito}"
-							placeholder="Ingrese la placa" required>
+						<input type="text" name="targeta" class="form-control" id="targetaCredito"
+							th:value="${targetaCredito}" placeholder="Ingrese la targeta" required>
 					</div>
 
 					<div>
@@ -32,9 +67,11 @@
 
 				</tr>
 			</thead>
-		</table>
 
+		</table>
 	</form>
+
+
 </body>
 
 </html>

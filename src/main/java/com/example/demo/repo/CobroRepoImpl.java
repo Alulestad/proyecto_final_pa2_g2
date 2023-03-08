@@ -30,9 +30,10 @@ public class CobroRepoImpl implements ICobroRepo {
 	}
 
 	@Override
-	public void insertarCobro(Cobro cobro) {
+	public Cobro insertarCobro(Cobro cobro) {
 		this.entityManager.persist(cobro);
-
+		Cobro cinsertado=cobro;
+		return cinsertado;
 	}
 
 	@Override

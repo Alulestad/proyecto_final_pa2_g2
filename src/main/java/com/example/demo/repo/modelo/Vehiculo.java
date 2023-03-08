@@ -47,7 +47,7 @@ public class Vehiculo {
 	@Column(name = "vehi_valor_dia")
 	private BigDecimal valorDia;
 
-	@OneToMany(mappedBy = "vehiculo",cascade = CascadeType.ALL )
+	@OneToMany(mappedBy = "vehiculo")
 	private List<Reservacion> reservaciones;
 
 	public String getPlaca() {
