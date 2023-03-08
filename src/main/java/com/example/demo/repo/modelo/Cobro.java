@@ -76,6 +76,15 @@ public class Cobro {
 		this.fecha = fecha;
 	}
 	
+	
+	public Reservacion getReservacion() {
+		return reservacion;
+	}
+	public void setReservacion(Reservacion reservacion) {
+		this.reservacion = reservacion;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Cobro [Id=" + Id + ", targetaCredito=" + targetaCredito + ", valorSubtotal=" + valorSubtotal

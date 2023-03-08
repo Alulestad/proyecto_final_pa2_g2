@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -36,8 +37,7 @@ public class Cliente {
 	private String usuario;
 	@Column(name = "clie_contrasenia")
 	private String contrasenia;
-	@Column(name = "clie_tipo")
-	private String tipo;
+
 	
 	
 	@OneToMany(mappedBy = "cliente")
@@ -97,17 +97,12 @@ public class Cliente {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
 				+ ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", registro=" + registro
-				+ ", usuario=" + usuario + ", tipo=" + tipo + "]";
+				+ ", usuario=" + usuario + "]";
 	}
 	
 	

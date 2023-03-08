@@ -38,16 +38,9 @@ public class VehiculoController {
 	public String validarPersona(Cliente cliente) {
 		
 		Cliente clienteG =this.clienteService.buscarPorUsuario_contrasenia(cliente.getUsuario(), cliente.getContrasenia());
-		if (clienteG !=null) {
-			if(clienteG.getTipo().equals("E")) {
-				System.out.println("Empleado CLiente: "+cliente);
-				//return "vistaEmpleado";
-			}else {
-				System.out.println("Cliente CLiente: "+cliente);
-				//return "vistaCliente";
-			}
+		
 			
-		}
+
 		System.out.println("null");
 		return "vistaPrincipal";
 	}
