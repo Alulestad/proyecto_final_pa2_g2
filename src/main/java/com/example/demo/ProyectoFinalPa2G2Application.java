@@ -70,6 +70,20 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		
 		List<Reservacion> myList= this.iReservacionService.buscarReservacionPorFecha(fInicio, fFin);
 		myList.forEach(System.out::println);
+		for (Reservacion res:myList) {
+			System.out.println("SQL "+res);
+			System.out.println("SQL Vehiculo"+res.getVehiculo());
+		}
+		
+		
+		List<Reservacion> myListR=this.iReservacionService.reporte(fInicio, fFin);
+		
+		for (Reservacion res:myListR) {
+			System.out.println("Reservaicon: "+res);
+			System.out.println("vehiculo: "+res.getVehiculo());
+		}
+		
+		
 	}
 
 

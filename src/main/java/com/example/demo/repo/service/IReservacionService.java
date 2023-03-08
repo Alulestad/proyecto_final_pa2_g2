@@ -10,6 +10,7 @@ public interface IReservacionService {
 	//CRUD
 	public Reservacion buscarReservacionPl(String placa);
 	public List<Reservacion>  buscarReservacionPorFecha(LocalDateTime fechaInicio,LocalDateTime fechaFin);
+	public List<Reservacion>reporte(LocalDateTime fechaInicio, LocalDateTime fechaFin);
 	public void eliminarReservacionPl(String placa);
 	public void insertarReservacionPl(Reservacion reservacion);
 	public void actualizarReservacionPl(Reservacion reservacion);

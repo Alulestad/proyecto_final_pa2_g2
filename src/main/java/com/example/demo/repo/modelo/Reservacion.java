@@ -2,8 +2,10 @@ package com.example.demo.repo.modelo;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,26 +36,18 @@ public class Reservacion {
 
 	@Column(name = "rese_fecha_fin")
 	private LocalDateTime fechaFin;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
 	@JoinColumn(name = "rese_id_vehiculo")
 	private Vehiculo vehiculo;
-	
+
 	@OneToOne(mappedBy = "reservacion")
 	private Cobro cobro;
-	
-	
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
 	@JoinColumn(name = "rese_id_cliente")
 	private Cliente cliente;
 
-	@Override
-	public String toString() {
-		return "Reservacion [id=" + id + ", placa=" + placa + ", cedula=" + cedula + ", fechaInicio=" + fechaInicio
-				+ ", fechaFin=" + fechaFin + "]";
-	}
-
-	// Set and Get
 	public Integer getId() {
 		return id;
 	}
@@ -92,6 +86,36 @@ public class Reservacion {
 
 	public void setFechaFin(LocalDateTime fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+
+	public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+	}
+
+	public Cobro getCobro() {
+		return cobro;
+	}
+
+	public void setCobro(Cobro cobro) {
+		this.cobro = cobro;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservacion [id=" + id + ", placa=" + placa + ", cedula=" + cedula + ", fechaInicio=" + fechaInicio
+				+ ", fechaFin=" + fechaFin + "]";
 	}
 
 }

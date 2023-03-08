@@ -47,6 +47,14 @@ public class ReservacionServiceImpl implements IReservacionService {
 		return this.reservacionRepopl.buscarReservacionPorFecha(fechaInicio, fechaFin);
 	}
 
+	@Override
+	public List<Reservacion> reporte(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+		// TODO Auto-generated method stub
+		return this.reservacionRepopl.reporte(fechaInicio, fechaFin);
+	}
+	
+	
+
 	
 	
 }

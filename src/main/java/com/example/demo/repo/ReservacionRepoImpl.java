@@ -6,10 +6,13 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repo.modelo.Reservacion;
+import com.example.demo.repo.modelo.Vehiculo;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+
 import jakarta.persistence.Query;
+
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
@@ -66,9 +69,48 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 		myQuery.setParameter("datoFechaFin", fechaFin);
 		
 		List<Reservacion> myList=myQuery.getResultList();
+		
+		for (Reservacion r:myList) {
+			r.getCliente().getCedula();
+			System.out.println("Cliente SQL: "+r.getCliente().getCedula());
+			r.getVehiculo().getPlaca();
+			System.out.println("Vehiculo SQL: "+r.getVehiculo().getPlaca());
+		}
+		
+		
 		return myList;
 	}
 	
 	
+	@Override
+	public List<Reservacion> buscarPorVehiculo(Vehiculo vehiculo) {
+		TypedQuery<Reservacion> query = this.entityMrese
+				.createQuery("SELECT r FROM Reservacion r WHERE r.vehiculo=:datoVehiculo", Reservacion.class);
+		query.setParameter("datoVehiculo", vehiculo);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Reservacion> reporte(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+		// TODO Auto-generated method stub
+				TypedQuery<Reservacion> query = this.entityMrese.createQuery(
+						"SELECT r FROM Reservacion r WHERE r.fechaInicio>=:fechaInicio AND r.fechaFin<=:fechaFin", Reservacion.class);
+				query.setParameter("fechaInicio", fechaInicio);
+				query.setParameter("fechaFin", fechaFin);
+
+				List<Reservacion> lista = query.getResultList();
+				
+				
+				for (Reservacion r:lista) {
+					r.getCliente().getCedula();
+					System.out.println("Cliente: "+r.getCliente().getCedula());
+					r.getVehiculo().getPlaca();
+					System.out.println("Vehiculo: "+r.getVehiculo().getPlaca());
+				}
+
+				
+
+				return lista;
+			}
 
 }
