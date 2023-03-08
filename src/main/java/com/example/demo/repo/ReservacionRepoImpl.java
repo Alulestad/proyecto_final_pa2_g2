@@ -44,4 +44,10 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 		
 	}
 
+	@Override
+	public Reservacion buscarReservacionId(Integer id) {
+		Reservacion reservacion=this.entityMrese.find(Reservacion.class, id);
+		return reservacion;
+	}
+
 }

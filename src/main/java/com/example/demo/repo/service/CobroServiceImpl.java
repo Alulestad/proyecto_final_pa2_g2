@@ -63,8 +63,10 @@ public class CobroServiceImpl implements ICobroService {
 		cobro.setValorTotal(valorTotal);
 		
 		
-		Reservacion reservacion=this.iReservacionRepo.buscarReservacionPl(targetaCredito);
-		cobro.setReservacion(null);
+		Reservacion reservacion=this.iReservacionRepo.buscarReservacionId(idReservacion);
+		cobro.setReservacion(reservacion);
+		
+		this.cobroRepo.insertarCobro(cobro);
 		
 		
 	}
