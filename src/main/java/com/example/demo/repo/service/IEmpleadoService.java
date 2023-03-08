@@ -24,6 +24,7 @@ public interface IEmpleadoService {
 	public void actualizarEmpleado(Empleado empleado);
 	
 	
+	public Empleado  buscarPorUsuario_contrasenia(String usuario, String contrasenia);
 	
 	
 	public List<ReservaDTO> reporteVIP(LocalDateTime fechaInicio, LocalDateTime fechaFin);

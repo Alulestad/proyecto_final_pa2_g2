@@ -10,46 +10,50 @@
 </head>
 
 <body>
-	<form th:action="@{/principal/vehiculos/actualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}" th:method="PUT">
+	<form th:action="@{/vehiculo/visualizar/{placa}(placa=${vehiculo.placa})}" th:object="${vehiculo}" th:method="GET">
 		<table>
 			<tr>
 				<td><label>Placa:</label></td>
-				<td><input type="text" id="placa" th:field="${vehiculo.placa}"></td>
+				<td th:text="${vehiculo.placa}"></td>
 			</tr>
 			<tr>
 				<td><label>Modelo:</label></td>
-				<td><input type="text" id="modelo" th:field="${vehiculo.modelo}"></td>
+				<td th:text="${vehiculo.modelo}"></td>
 			</tr>
 			<tr>
 				<td><label>Marca:</label></td>
-				<td><input type="text" id="marca" th:field="${vehiculo.marca}"></td>
+				<td th:text="${vehiculo.marca}"></td>
 			</tr>
 			<tr>
 				<td><label>Año:</label></td>
-				<td><input type="text" id="anio" th:field="${vehiculo.anio}"></td>
+				<td th:text="${vehiculo.anio}"></td>
 			</tr>
 			<tr>
 				<td><label>País:</label></td>
-				<td><input type="text" id="pais" th:field="${vehiculo.pais}"></td>
+				<td th:text="${vehiculo.pais}"></td>
 			</tr>
 			<tr>
 				<td><label>Cilindraje:</label></td>
-				<td><input type="text" id="cilin" th:field="${vehiculo.cilindraje}"></td>
+				<td th:text="${vehiculo.cilindraje}"></td>
 			</tr>
 			<tr>
 				<td><label>Avalúo:</label></td>
-				<td><input type="text" id="aval" th:field="${vehiculo.avaluo}"></td>
+				<td th:text="${vehiculo.avaluo}"></td>
 			</tr>
 			<tr>
 				<td><label>Precio por día:</label></td>
-				<td><input type="text" id="pDia" th:field="${vehiculo.valorDia}"></td>
+				<td th:text="${vehiculo.valorDia}"></td>
 			</tr>
 			<tr>
 				<td><label>Estado:</label></td>
-				<td><input type="text" id="estado" th:field="${vehiculo.estado}"></td>
+				<td th:text="${vehiculo.estado}"></td>
 			</tr>
+		
 		</table>
-		<input class="btn btn-info" type="submit" value="Actualizar">
+			<div>
+			<a th:href="@{/vehiculo/buscar}" class="btn btn-info">Regresar</a>	
+	</div>
+	
 	</form>
 </body>
 
