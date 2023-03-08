@@ -14,39 +14,36 @@
 
 <style>
 	body {
-		background-color:rgb(239, 2, 0)
+		background-color: rgb(239, 2, 0);
 	}
 </style>
 
 <style>
 	body {
 		background-image: url('https://www.avis.com/content/dam/avis/na/us/common/offers/avis-car-rental-social-brand-1200x630.jpg');
-		
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-size: 1300px 900px;
 	}
 </style>
 
-<h1 style="text-align:center">INGRESO AL SISTEMA DE AVIS RENT A CAR</h1>
+<h1 style="text-align:center">EMPLEADO MENÚ</h1>
 
 <body>
-	<form th:action="@{/empleado}" th:method="GET">
+
+	<form th:action="@{/empleado/registrar}" th:method="GET">
 		<h1 style="text-align: center">
-			<input type="submit" value="empleado" class="btn btn-secondary">
+			<input type="submit" value="Registrar empleado">
 		</h1>
 	</form>
-
-	<form th:action="@{/clientes/inicio}" th:method="GET">
+	
+	
+	
+	
+	<form th:action="@{/empleado/consultarReporteVIP}" th:method="GET">
 		<h1 style="text-align: center">
-			<input type="submit" value="cliente" class="btn btn-secondary">
+			<input type="submit" value="ReporteVIP">
 		</h1>
 	</form>
-
-
-
-
 
 </body>
-
-</html>
