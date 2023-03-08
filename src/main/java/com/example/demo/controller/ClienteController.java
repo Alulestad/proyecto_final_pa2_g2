@@ -89,6 +89,7 @@ public class ClienteController {
 		this.reservacionService.reservar(placa, cedula, fechaInicio, fechaFin);
 		return "Cliente/vistaPago";
 	}
+
 	@PostMapping("/reservacion/pago")
 	public String pagoReservacion(Cobro cobro, @Param("targeta") String targeta) {
 		//this.cobroService.insertarCobro(targeta, null, null, null)
