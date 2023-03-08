@@ -50,7 +50,11 @@ public class ClienteController {
 		model.addAttribute("clientes", user);
 		model.addAttribute("contrasenia", contrasenia);
 		model.addAttribute("usuario", usuario);
+		if(user!=null) {
+			return "redirect:/clientes/inicio" ;
+		}else {
 		return "Cliente/vistaInicioCliente";
+	}
 	}
 
 	@GetMapping("/vehiculo/buscar")
@@ -160,7 +164,6 @@ public class ClienteController {
 	public String actualizarCliente(@PathVariable("cedula") String cedula, Cliente cliente) {
 		cliente.setCedula(cedula);
 		this.clienteService.actualizar(cliente);
-		System.out.println("Vehiculo actualizado!");
 		return "Cliente/vistaInicioCliente";
 	}
 
