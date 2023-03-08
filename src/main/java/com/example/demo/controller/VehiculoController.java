@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.repo.modelo.Cliente;
+import com.example.demo.repo.modelo.Cobro;
+import com.example.demo.repo.modelo.Reservacion;
 import com.example.demo.repo.modelo.Vehiculo;
 import com.example.demo.repo.service.IClienteService;
+import com.example.demo.repo.service.ICobroService;
+import com.example.demo.repo.service.IReservacionService;
 import com.example.demo.repo.service.IVehiculoService;
 
 @Controller
@@ -28,6 +32,12 @@ public class VehiculoController {
 	
 	@Autowired
 	private IClienteService clienteService;
+	
+	@Autowired
+	private ICobroService cobroService;
+	
+	@Autowired
+	private IReservacionService iReservacionService;
 	
 	
 	@GetMapping("/cliente/iniciar")
@@ -61,7 +71,17 @@ public class VehiculoController {
 		
 		return "vistaPrincipal";//retorneme a mi misma vista
 	}
-
+	
+	
+	@GetMapping("/verificarVehiculo")
+	public String verificarVehiculo(Model modelo, Reservacion reservacion) {
+		boolean disponible=this.iReservacionService.verificarDisponibilidad(reservacion.getVehiculo().getPlaca(), reservacion.getFechaInicio(), reservacion.getFechaFin());
+		if(disponible==true) {
+			return "/pagarVehiculo";
+		} else {
+		return "redirect:/cliente/buscarVehiculoRes";
+			}
+	}
 	// GET
 	@GetMapping("/vehiculos/buscar")
 	public String buscarTodos(Model modelo) {

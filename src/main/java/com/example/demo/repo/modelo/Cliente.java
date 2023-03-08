@@ -136,4 +136,14 @@ public class Cliente {
 				+ ", usuario=" + usuario + ", contrasenia=" + contrasenia +"]";
 	}
 
+<<<<<<< HEAD
+=======
+	@Column(name = "clie_tipo")
+	private String tipo;
+	
+
+
+
+	
+>>>>>>> origin/AL
 }

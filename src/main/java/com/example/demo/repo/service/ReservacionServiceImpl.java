@@ -13,15 +13,19 @@ import com.example.demo.repo.IVehiculoRepository;
 import com.example.demo.repo.modelo.Cliente;
 import com.example.demo.repo.modelo.Reservacion;
 import com.example.demo.repo.modelo.Vehiculo;
+<<<<<<< HEAD
 import static java.time.temporal.ChronoUnit.DAYS;
 
 import java.math.BigDecimal;
+=======
+>>>>>>> origin/AL
 
 @Service
 public class ReservacionServiceImpl implements IReservacionService {
 
 	@Autowired
 	private IReservacionRepo reservacionRepopl;
+<<<<<<< HEAD
 
 	
 	@Autowired
@@ -31,6 +35,13 @@ public class ReservacionServiceImpl implements IReservacionService {
 	private IVehiculoRepository iVehiculoRepository;
 	
 
+=======
+	
+	@Autowired
+	private IVehiculoService iVehiculoService;
+	
+	
+>>>>>>> origin/AL
 	@Override
 	public Reservacion buscarReservacionPl(String placa) {
 		// TODO Auto-generated method stub
@@ -65,6 +76,7 @@ public class ReservacionServiceImpl implements IReservacionService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<Reservacion> reporte(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
 		// TODO Auto-generated method stub
 		return this.reservacionRepopl.reporte(fechaInicio, fechaFin);
@@ -84,6 +96,23 @@ public class ReservacionServiceImpl implements IReservacionService {
 		// TODO Auto-generated method stub
 		return this.listaReservacionPorCedula_Placa_Fechas(cedula, placa, fechaInicio, fechaFinal);
 	}
+=======
+	public boolean verificarDisponibilidad(String placa, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+		// TODO Auto-generated method stub
+		Vehiculo vehi=this.iVehiculoService.buscarPorPlaca(placa);
+		if(vehi==null) {
+			return false;
+		}
+		List<Reservacion> reservas=this.reservacionRepopl.buscarReservacionPorFecha(fechaInicio, fechaFin);
+		if(reservas!=null) {
+			return false;
+		}
+		return true;
+	}
+	
+	
+
+>>>>>>> origin/AL
 	
 	
 	
