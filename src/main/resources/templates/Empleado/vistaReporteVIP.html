@@ -15,9 +15,6 @@
 		<thead>
 			<tr>
 			
-				<th>Sub Total</th>
-				<th>Iva</th>
-				<th>Total Pagar</th>
 				<th>Cedula</th>
 				<th>Apellido</th>
 				<th>Placa</th>
@@ -32,9 +29,6 @@
 
 		<tbody>
 			<tr th:each="lista:${reservas}">
-				<td th:text="${lista.subTotal}"></td>
-				<td th:text="${lista.iva}"></td>
-				<td th:text="${lista.totalPagar}"></td>
 				<td th:text="${lista.cedula}"></td>
 				<td th:text="${lista.apellido}"></td>
 				<td th:text="${lista.placa}"></td>

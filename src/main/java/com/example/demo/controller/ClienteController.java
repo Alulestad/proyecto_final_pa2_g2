@@ -149,7 +149,7 @@ public class ClienteController {
 		//reservacionIns.setCobro(null);
 		
 		
-		return "Principal/vistaInicio";
+		return "redirect:/clientes/login";
 
 	}
 

@@ -47,8 +47,8 @@ public class EmpleadoController {
 	
 	@GetMapping("/reporteVIP")
 	public String buscarTodos(ReservaDTO reserva, Model modelo) {
-		List<ReservaDTO> lista = this.empleadoService.reporteVIP(LocalDateTime.parse(reserva.getFechaInicio()),
-				LocalDateTime.parse(reserva.getFechaFin()));
+		List<ReservaDTO> lista = this.empleadoService.reporteVIP(LocalDateTime.parse("2023-03-01"),
+				LocalDateTime.parse("2023-03-02"));
 		modelo.addAttribute("reservas", lista);
 		return "Empleado/vistaReporteVIP";
 	}
