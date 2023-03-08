@@ -12,7 +12,7 @@
 
 <body>
 	<h1>¡Se registró con éxito! Procedamos con el pago:</h1>
-	<form th:action="@{reservacion/pago}" th:object="${cobro}" th:method="PUT">
+	<form th:action="@{reservacion/pago}" th:object="${cobro}" th:method="POST">
 
 		<table>
 			<thead>
@@ -22,7 +22,7 @@
 						<label> Tarjeta: </label>
 					</div>
 					<div>
-						<input type="text" name="targeta" class="form-control" id="targeta" th:value="${targeta}"
+						<input type="text" name="targeta" class="form-control" id="targetaCredito" th:value="${targetaCredito}"
 							placeholder="Ingrese la placa" required>
 					</div>
 

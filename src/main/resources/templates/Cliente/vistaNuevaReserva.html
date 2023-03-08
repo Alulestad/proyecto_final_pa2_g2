@@ -11,9 +11,10 @@
 </head>
 
 <body>
-	<form th:action="@{reservacion/insertar}" th:object="${reservacion}" th:method="PUT">
 
+	<form th:action="@{/clientes/reservacion/insertar}" th:object="${reservacion}" th:method="POST">
 		<table>
+
 			<thead>
 				<tr>
 					<!--form th:action="@{/clientes/vehiculo/buscarFiltrados}"-->
@@ -46,14 +47,14 @@
 							th:value="${fechaFin}" required>
 					</div>
 					<div>
-						<input type="submit" value="Guardar">
+						<input type="submit" value="GuardarR">
 					</div>
 				</tr>
 			</thead>
 
 		</table>
-
 	</form>
+
 </body>
 
 </html>

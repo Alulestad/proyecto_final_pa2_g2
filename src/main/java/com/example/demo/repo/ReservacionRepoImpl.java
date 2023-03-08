@@ -83,7 +83,7 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 			LocalDateTime fechaInicio, LocalDateTime fechaFinal) {
 			Query myQuery=this.entityMrese.createNativeQuery(""
 					+ "SELECT * FROM reservacion r "
-					+ "where  :fechaInicio<=r.rese_fecha_inicio "
+					+ "where  (:fechaInicio<=r.rese_fecha_inicio "
 					+ "    and r.rese_fecha_fin<=:fechaFinal)"
 					+ "    or (:fechaInicio<=r.rese_fecha_fin"
 					+ "        and :fechaInicio>=r.rese_fecha_inicio)"
@@ -91,7 +91,7 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 					+ "        and :fechaFinal>=r.rese_fecha_inicio)"
 					+ "    or (:fechaInicio>=r.rese_fecha_inicio "
 					+ "        and r.rese_fecha_fin>=:fechaFinal)"
-					+ "    and r.rese_placa=placa",Reservacion.class);
+					+ "    and r.rese_placa=:placa",Reservacion.class);
 			
 			myQuery.setParameter("fechaInicio", fechaInicio);
 			

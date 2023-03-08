@@ -86,8 +86,17 @@ public class ClienteController {
 
 	@PostMapping("/reservacion/insertar")
 	public String insertarReservacion(Reservacion reservacion,  @Param("placa") String placa,  @Param("cedula") String cedula,  @Param("fechaInicio") LocalDateTime fechaInicio,  @Param("fechaFin") LocalDateTime  fechaFin) {
-		this.reservacionService.reservar(placa, cedula, fechaInicio, fechaFin);
+		System.out.println("Placa: "+placa);
+		System.out.println("Placa: "+cedula);
+		Boolean disp=this.reservacionService.verificarDisponibilidad(placa, fechaInicio, fechaFin);
+		
+		//this.reservacionService.reservar(placa, cedula, fechaInicio, fechaFin);
+		System.out.println("DISPONIVLIDIDAD: "+disp);
+		if (disp) {
+			return "Cliente/vistaPago";
+		}
 		return "Cliente/vistaPago";
+		
 	}
 
 	@PostMapping("/reservacion/pago")

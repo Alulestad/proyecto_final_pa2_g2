@@ -98,13 +98,17 @@ public class ReservacionServiceImpl implements IReservacionService {
 	public boolean verificarDisponibilidad(String placa, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
 		// TODO Auto-generated method stub
 		Vehiculo vehi=this.iVehiculoService.buscarPorPlaca(placa);
+		System.out.println("verificarDisponibilidad Vehiculo: "+vehi);
 		if(vehi==null) {
 			return false;
+		}else {
+			List<Reservacion> reservas=this.reservacionRepopl.listaReservacionPorCedula_Placa_Fechas(null,placa,fechaInicio, fechaFin);
+			System.out.println("verificarDisponibilidad RESERVAS: "+reservas);
+			if(reservas.size()!=0) {
+				return false;
+			}
 		}
-		List<Reservacion> reservas=this.reservacionRepopl.buscarReservacionPorFecha(fechaInicio, fechaFin);
-		if(reservas!=null) {
-			return false;
-		}
+		
 		return true;
 	}
 	
@@ -124,7 +128,7 @@ public class ReservacionServiceImpl implements IReservacionService {
 		Vehiculo vehi = this.iVehiculoRepository.buscarPorPlaca(placa);
 		Cliente cli = this.clienteRepo.buscarPorCedula(cedula);
 		Reservacion res = new Reservacion();
-		if(vehi.getEstado()=="D") {
+		if(vehi.getEstado().equals("D")) {
 			long dias = DAYS.between(fechaInicio, fechaFin);
 			res.setSubtotal(vehi.getValorDia().multiply(new BigDecimal(dias)));
 			res.setIva((res.getSubtotal().multiply(new BigDecimal(12))).divide(new BigDecimal(100)));
