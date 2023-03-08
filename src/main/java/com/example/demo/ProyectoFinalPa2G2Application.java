@@ -67,7 +67,9 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		
 		
 		LocalDateTime fInicio=LocalDateTime.of(2022, 01, 25, 0, 0);
+		LocalDateTime fInicio2=LocalDateTime.of(2023, 03, 9, 0, 0);
 		LocalDateTime fFin=LocalDateTime.of(2024, 01, 25, 0, 0);
+		LocalDateTime fFin2=LocalDateTime.of(2023, 03, 9, 0, 0);
 		
 		List<Reservacion> myList= this.iReservacionService.buscarReservacionPorFecha(fInicio, fFin);
 		myList.forEach(System.out::println);
@@ -84,6 +86,9 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 			System.out.println("vehiculo: "+res.getVehiculo());
 		}
 		
+		
+		Boolean disponibilidad=this.iReservacionService.verificarDisponibilidad("abc-123", fInicio2, fFin2);
+		System.out.println(disponibilidad);
 		
 	}
 
