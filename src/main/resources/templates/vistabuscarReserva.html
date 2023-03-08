@@ -15,7 +15,7 @@
 	<div class="alert alert-danger" role="alert" th:if="${mensaje!=null}" th:text="${mensaje}"> </div>
 	<div th:if="${reservacion!=null}">
 	<h1>Reservar vehículo</h1>
-	<form th:action="@{/reservaciones/verificarVehiculo}" th:object="${reservacion}" method="GET">
+	<form th:action="@{/principal/verificarVehiculo}" th:object="${reservacion}" method="GET">
 		<div class="table table-hover">
 			<table>
 				<tr>
