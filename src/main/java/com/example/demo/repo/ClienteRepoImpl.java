@@ -30,6 +30,8 @@ public class ClienteRepoImpl implements IClienteRepo {
 		this.entityManager.merge(cliente);
 	}
 
+	
+	//Registro 1c (Cliente)
 	@Override
 	public Cliente buscarPorCedula(String cedula) {
 		// TODO Auto-generated method stub
