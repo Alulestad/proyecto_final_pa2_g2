@@ -11,63 +11,13 @@
 </head>
 
 <body>
-	<div th:if="${reserva!=null} AND ${reserva.cobro!=null}">
+	<div th:if="${reservacion!=null} and ${reservacion.cobro!=null}">
 		<h3> Vehiculo disponible</h3>
+		<h3>Total a pagar</h3>
+		<h3 th:text="${#numbers.formatDecimal(reservacion.cobro.valorTotal,1,2)}"></h3>
 	</div>
-	<h1>Pagar vehículo</h1>
 	<!--<div class="alert alert-success" role="alert" th:text="${mensaje}" th:if="${mensaje!=null}"> </div>-->
-	<form th:action="@{/cliente/reservar/pagarVehiculo}" th:object="${reservacion}" th:method="put">
-		<div class="table table-dark table-striped">
-			<table>
-				<tr>
-					<td>
-						<label class="col-form-label">Placa:</label>
-					</td>
-					<td>
-						<input class="form-control" type="text" id="placa" th:field="*{vehiculo.placa}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Cedula:</label>
-					</td>
-					<td>
-						<input class="form-control" type="text" id="cedula" th:field="*{cliente.cedula}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Fecha inicio:</label>
-					</td>
-					<td>
-						<input class="form-control" type="datetime-local" id="fechai" th:field="*{fechaInicio}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Fecha fin:</label>
-					</td>
-					<td>
-						<input class="form-control" type="datetime-local" id="fechaf" th:field="*{fechaFin}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Ingrese numero de tarjeta de crédito:</label>
-					</td>
-					<td>
-						<input type="text" id="tarjeta" th:field="*{cobro.tarjetaCredito}">
-						
-					</td>
-				</tr>
-
-				<tr>
-				</tr>
-			</table>
-		<input type="submit" value="Pagar">
-	</form>
-
-
+	
 </body>
 
 

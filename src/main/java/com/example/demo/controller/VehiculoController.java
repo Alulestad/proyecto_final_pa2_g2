@@ -1,8 +1,5 @@
 package com.example.demo.controller;
 
-import java.math.BigDecimal;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,16 +70,10 @@ public class VehiculoController {
 		return "vistaPrincipal";//retorneme a mi misma vista
 	}
 	
-	@GetMapping("/cliente/buscarVehiculoRes")
-	public String obtenerPaginaBuscarVehiculo(Reservacion reservacion, Model modelo) {
-		modelo.addAttribute("reservacion", reservacion);
-		return "vistaBuscarReserva";
-	}
-
 	
 	@GetMapping("/verificarVehiculo")
 	public String verificarVehiculo(Model modelo, Reservacion reservacion) {
-		boolean disponible=this.iReservacionService.verificarDisponibilidad(reservacion.getPlaca(), reservacion.getFechaInicio(), reservacion.getFechaFin());
+		boolean disponible=this.iReservacionService.verificarDisponibilidad(reservacion.getVehiculo().getPlaca(), reservacion.getFechaInicio(), reservacion.getFechaFin());
 		if(disponible==true) {
 			return "/pagarVehiculo";
 		} else {

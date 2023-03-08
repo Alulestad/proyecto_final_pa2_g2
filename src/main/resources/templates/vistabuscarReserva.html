@@ -13,11 +13,9 @@
 
 <body>
 	<div class="alert alert-danger" role="alert" th:if="${mensaje!=null}" th:text="${mensaje}"> </div>
-	<div th:if="${reserva!=null}">
-		<h3> fechas solapadas</h3>
-	</div>
+	<div th:if="${reservacion!=null}">
 	<h1>Reservar vehículo</h1>
-	<form th:action="@{/cliente/verificarVehiculo}" th:object="${reservacion}" method="get">
+	<form th:action="@{/reservaciones/verificarVehiculo}" th:object="${reservacion}" method="GET">
 		<div class="table table-hover">
 			<table>
 				<tr>
@@ -25,7 +23,7 @@
 						<label class="col-form-label">Placa:</label>
 					</td>
 					<td>
-						<input class="form-control" type="text" id="placa" th:field="*{vehiculo.placa}">
+						<input class="form-control" type="text" id="vehiculo.placa" th:field="*{vehiculo.placa}">
 					</td>
 				</tr>
 				<tr>
@@ -33,7 +31,7 @@
 						<label>Cedula:</label>
 					</td>
 					<td>
-						<input class="form-control" type="text" id="cedula" th:field="*{cliente.cedula}">
+						<input class="form-control" type="text" id="cliente.cedula" th:field="*{cliente.cedula}">
 					</td>
 				</tr>
 				<tr>
@@ -41,7 +39,7 @@
 						<label>Fecha inicio:</label>
 					</td>
 					<td>
-						<input class="form-control" type="datetime-local" id="fechai" th:field="*{fechaInicio}">
+						<input class="form-control" type="datetime-local" id="fechaInicio" th:field="*{fechaInicio}">
 					</td>
 				</tr>
 				<tr>
@@ -49,7 +47,7 @@
 						<label>Fecha fin:</label>
 					</td>
 					<td>
-						<input class="form-control" type="datetime-local" id="fechaf" th:field="*{fechaFin}">
+						<input class="form-control" type="datetime-local" id="fechaFin" th:field="*{fechaFin}">
 					</td>
 				</tr>
 				<tr>
