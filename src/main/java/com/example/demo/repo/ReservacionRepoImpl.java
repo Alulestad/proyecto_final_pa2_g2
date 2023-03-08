@@ -92,6 +92,8 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 					+ "        and :fechaFinal>=r.rese_fecha_inicio)"
 					+ "    or (:fechaInicio>=r.rese_fecha_inicio "
 					+ "        and r.rese_fecha_fin>=:fechaFinal)"
+					+ "	   or (date(:fechaInicio)=date(r.rese_fecha_inicio) and "
+					+ "			date(:fechaFinal)=date(r.rese_fecha_fin))"
 					+ "    and r.rese_placa=:placa",Reservacion.class);
 			
 			myQuery.setParameter("fechaInicio", fechaInicio);

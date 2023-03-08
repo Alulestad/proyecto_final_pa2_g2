@@ -145,8 +145,7 @@ public class ClienteController {
 		//reservacionIns.setCobro(null);
 		
 		
-		
-		return "Cliente/vistaInicioCliente";
+		return "Principal/vistaInicio";
 
 	}
 
