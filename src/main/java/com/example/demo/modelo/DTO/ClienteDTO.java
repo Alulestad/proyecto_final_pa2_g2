@@ -1,6 +1,9 @@
 package com.example.demo.modelo.DTO;
 
 import java.math.BigDecimal;
+import java.util.List;
+
+import com.example.demo.repo.modelo.Reservacion;
 
 public class ClienteDTO implements Comparable<ClienteDTO> {
 
@@ -14,6 +17,7 @@ public class ClienteDTO implements Comparable<ClienteDTO> {
 
 	private BigDecimal iva;
 
+	private List<Reservacion> reservaciones;
 	@Override
 	public int compareTo(ClienteDTO o) {
 		// TODO Auto-generated method stub
@@ -60,6 +64,15 @@ public class ClienteDTO implements Comparable<ClienteDTO> {
 	public void setIva(BigDecimal iva) {
 		this.iva = iva;
 	}
+
+	public List<Reservacion> getReservaciones() {
+		return reservaciones;
+	}
+
+	public void setReservaciones(List<Reservacion> reservaciones) {
+		this.reservaciones = reservaciones;
+	}
+	
 	
 	
 }

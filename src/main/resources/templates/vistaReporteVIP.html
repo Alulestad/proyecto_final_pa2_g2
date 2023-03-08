@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>   
+	<meta charset="UTF-8">   
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">   
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">   
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<title>Document</title>
+</head>
+
+<body>   
+	<table class="table table-success table-striped-columns">
+		<thead>
+			<tr>
+			
+				<th>Sub Total</th>
+				<th>Iva</th>
+				<th>Total Pagar</th>
+				<th>Cedula</th>
+				<th>Apellido</th>
+				<th>Placa</th>
+				<th>Marca</th>
+				<th>Modelo</th>
+			</tr>
+		</thead>
+
+
+
+
+
+		<tbody>
+			<tr th:each="lista:${reservas}">
+				<td th:text="${lista.subTotal}"></td>
+				<td th:text="${lista.iva}"></td>
+				<td th:text="${lista.totalPagar}"></td>
+				<td th:text="${lista.cedula}"></td>
+				<td th:text="${lista.apellido}"></td>
+				<td th:text="${lista.placa}"></td>
+				<td th:text="${lista.marca}"></td>
+				<td th:text="${lista.modelo}"></td>
+
+			</tr>
+		</tbody>
+
+	</table>
+
+	<tr>
+		<form th:action="@{/empleado" th:method="GET">
+			<input type="submit" value="Volver">
+		</form>
+	</tr>
+</body>
+
+</html>

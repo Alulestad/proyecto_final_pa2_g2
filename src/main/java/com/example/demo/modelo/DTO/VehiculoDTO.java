@@ -2,6 +2,9 @@ package com.example.demo.modelo.DTO;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.example.demo.repo.modelo.Reservacion;
 
 public class VehiculoDTO implements Comparable<VehiculoDTO>{
 
@@ -31,6 +34,7 @@ public class VehiculoDTO implements Comparable<VehiculoDTO>{
 
     private String numeroReserva;
     
+    private List<Reservacion> reservaciones;
     
 
 	public String getPlaca() {
@@ -138,13 +142,26 @@ public class VehiculoDTO implements Comparable<VehiculoDTO>{
 	}
     
 	
+	
+	public List<Reservacion> getReservaciones() {
+		return reservaciones;
+	}
+
+	public void setReservaciones(List<Reservacion> reservaciones) {
+		this.reservaciones = reservaciones;
+	}
+
+	
+	
+
 	@Override
 	public String toString() {
-		return "VehiculoVIP [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", añoFabricacion="
+		return "VehiculoDTO [placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", anioFabricacion="
 				+ anioFabricacion + ", valorPorDia=" + valorPorDia + ", subTotal=" + subTotal + ", totalPagar="
-				+ totalPagar + "]";
+				+ totalPagar + ", anio=" + anio + ", mes=" + mes + ", estado=" + estado + ", fechaInicio=" + fechaInicio
+				+ ", fechaFin=" + fechaFin + ", numeroReserva=" + numeroReserva + ", reservaciones=" + reservaciones
+				+ "]";
 	}
-	
 
 	@Override
 	public int compareTo(VehiculoDTO o) {

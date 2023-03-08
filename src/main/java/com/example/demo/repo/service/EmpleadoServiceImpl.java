@@ -17,6 +17,7 @@ import com.example.demo.repo.IEmpleadoRepo;
 import com.example.demo.repo.IReservacionRepo;
 import com.example.demo.repo.IVehiculoRepository;
 import com.example.demo.repo.modelo.Cliente;
+import com.example.demo.repo.modelo.Cobro;
 import com.example.demo.repo.modelo.Empleado;
 import com.example.demo.repo.modelo.Reservacion;
 import com.example.demo.repo.modelo.Vehiculo;
@@ -26,16 +27,16 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 
 	@Autowired
 	private IEmpleadoRepo empleadoRepo;
-	
+
 	@Autowired
 	private IReservacionRepo iReservacionRepo;
-	
+
 	@Autowired
 	private IClienteRepo clienteRepo;
-	
+
 	@Autowired
 	private IVehiculoRepository iVehiculoRepository;
-	
+
 	@Override
 	public Empleado buscarEmpleadoId(Integer id) {
 		// TODO Auto-generated method stub
@@ -71,17 +72,15 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		this.empleadoRepo.actualizarEmpleado(empleado);
 	}
 
-	
-	
-	
-	
-	
 	@Override
 	public List<ReservaDTO> reporteVIP(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
-List<Reservacion> reserva = this.iReservacionRepo.reporte(fechaInicio, fechaFin);
-		
+		List<Reservacion> reserva = this.iReservacionRepo.reporte(fechaInicio, fechaFin);
+
 		List<ReservaDTO> vip = reserva.stream().map(r -> {
 			ReservaDTO reporte = new ReservaDTO();
+			reporte.setSubTotal(r.getCobro().getValorSubtotal());
+			reporte.setIva(r.getCobro().getValorIva());
+			reporte.setTotalPagar(r.getCobro().getValorTotal());
 
 			reporte.setCedula(r.getCliente().getCedula());
 			reporte.setApellido(r.getCliente().getApellido());
@@ -99,63 +98,72 @@ List<Reservacion> reserva = this.iReservacionRepo.reporte(fechaInicio, fechaFin)
 	@Override
 	public List<ClienteDTO> clientesVIP() {
 		List<Cliente> clientes = this.clienteRepo.buscarTodos();
-		
+
 		List<ClienteDTO> vip = clientes.stream().map(c -> {
 			ClienteDTO cliente = new ClienteDTO();
 			cliente.setCedula(c.getCedula());
 			cliente.setNombre(c.getNombre());
 			cliente.setApellido(c.getApellido());
+			cliente.setReservaciones(c.getReservaciones());
+			
 			return cliente;
-		}).collect(Collectors.toList());
+		}).filter(c -> !c.getValorTotal().equals(BigDecimal.ZERO)).sorted(Comparator.reverseOrder())
+				.collect(Collectors.toList());
 
 		return vip;
 	}
 
-	
 	@Override
 	public List<VehiculoDTO> vehiculosVIP(String anio, String mes) {
 		// TODO Auto-generated method stub
 
-				if (anio.length() < 4) {
-					anio = "20" + anio;
-				}
-				if (mes.length() < 2) {
-					mes = "0" + mes;
-				}
-				String formatoFecha = anio.concat("-" + mes + "-01T00:00:00");
-				LocalDateTime fechaInicio = LocalDateTime.parse(formatoFecha);
+		if (anio.length() < 4) {
+			anio = "20" + anio;
+		}
+		if (mes.length() < 2) {
+			mes = "0" + mes;
+		}
+		String formatoFecha = anio.concat("-" + mes + "-01T00:00:00");
+		LocalDateTime fechaInicio = LocalDateTime.parse(formatoFecha);
 
-				mes = "" + (Integer.parseInt(mes) + 1);
+		mes = "" + (Integer.parseInt(mes) + 1);
 
-				if (mes.length() < 2)
-					mes = "0" + mes;
-				formatoFecha = anio.concat("-" + mes + "-01T23:59:00");
-				LocalDateTime fechaFin = LocalDateTime.parse(formatoFecha);
+		if (mes.length() < 2)
+			mes = "0" + mes;
+		formatoFecha = anio.concat("-" + mes + "-01T23:59:00");
+		LocalDateTime fechaFin = LocalDateTime.parse(formatoFecha);
 
-				List<Vehiculo> vehiculos = this.iVehiculoRepository.buscarTodos();
+		List<Vehiculo> vehiculos = this.iVehiculoRepository.buscarTodos();
+		
+		for (Vehiculo v : vehiculos) {
+			if (v.getReservaciones() != null) {
+				List<Reservacion> reservas = v.getReservaciones().stream().filter(
+						r -> r.getFechaInicio().compareTo(fechaInicio) >= 0 && r.getFechaFin().compareTo(fechaFin) < 0
+						)
+						.collect(Collectors.toList());
+				v.setReservaciones(reservas);			
+				
+				}	
+		
+		}
+	
+		
 
-				for (Vehiculo v : vehiculos) {
-					if (v.getReservaciones() != null) {
-						List<Reservacion> reservas = v.getReservaciones().stream().filter(
-								r -> r.getFechaInicio().compareTo(fechaInicio) >= 0 && r.getFechaFin().compareTo(fechaFin) < 0)
-								.collect(Collectors.toList());
-						v.setReservaciones(reservas);
-					}
-				}
+		List<VehiculoDTO> vip = vehiculos.stream().filter(v -> v.getReservaciones() != null).map(v -> {
+			VehiculoDTO vehiculo = new VehiculoDTO();
+			vehiculo.setPlaca(v.getPlaca());
+			vehiculo.setModelo(v.getModelo());
+			vehiculo.setMarca(v.getMarca());
+			vehiculo.setAnioFabricacion(v.getAnio());
+			vehiculo.setValorPorDia(v.getValorDia());
 
-				List<VehiculoDTO> vip = vehiculos.stream().filter(v -> v.getReservaciones() != null).map(v -> {
-					VehiculoDTO vehiculo = new VehiculoDTO();
-					vehiculo.setPlaca(v.getPlaca());
-					vehiculo.setModelo(v.getModelo());
-					vehiculo.setMarca(v.getMarca());
-					vehiculo.setAnioFabricacion(v.getAnio());
-					vehiculo.setValorPorDia(v.getValorDia());
 					
-					return vehiculo;
-				}).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+			
+			return vehiculo;
+		}).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 
-				return vip;
-			}
+		return vip;
+	}
 
 	@Override
 	public List<Empleado> verEmpleado() {
