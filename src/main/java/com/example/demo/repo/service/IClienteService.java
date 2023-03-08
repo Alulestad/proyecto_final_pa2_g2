@@ -16,4 +16,7 @@ public interface IClienteService {
 	public void borrar(String cedula);
 	
 	public List<Cliente> buscarPorApellido(String apellido);
+	
+	//Para la vista de empleado
+		public List<Cliente> buscarTodos2();
 }

@@ -82,4 +82,12 @@ public class ClienteRepoImpl implements IClienteRepo {
 				return lista;
 	}
 
+	@Override
+	public List<Cliente> buscarTodos2() {
+		// TODO Auto-generated method stub
+		TypedQuery<Cliente> query = this.entityManager.createQuery("SELECT c FROM Cliente c", Cliente.class);
+		return query.getResultList();
+	}
+	
+
 }

@@ -1,6 +1,7 @@
 package com.example.demo.repo;
 
 
+import com.example.demo.repo.modelo.Cliente;
 import com.example.demo.repo.modelo.Empleado;
 
 public interface IEmpleadoRepo {
@@ -16,4 +17,7 @@ public interface IEmpleadoRepo {
 	public void insertarEmpleado(Empleado empleado);
 
 	public void actualizarEmpleado(Empleado empleado);
+	
+	
+	public Empleado  buscarPorUsuario_contrasenia(String usuario, String contrasenia);
 }
