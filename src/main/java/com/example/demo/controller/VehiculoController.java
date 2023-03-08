@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.example.demo.repo.modelo.Reservacion;
 import com.example.demo.repo.modelo.Vehiculo;
 import com.example.demo.repo.service.IClienteService;
 import com.example.demo.repo.service.ICobroService;
+import com.example.demo.repo.service.IGestorReservasServiceImpl;
 import com.example.demo.repo.service.IReservacionService;
 import com.example.demo.repo.service.IVehiculoService;
 
@@ -33,8 +35,6 @@ public class VehiculoController {
 	@Autowired
 	private IClienteService clienteService;
 	
-	@Autowired
-	private ICobroService cobroService;
 	
 	@Autowired
 	private IReservacionService iReservacionService;
@@ -141,4 +141,7 @@ public class VehiculoController {
 		return "vistaNuevoVehiculoEmpleados";
 		
 	}
+
+	
+	
 }

@@ -120,14 +120,18 @@ public class Cliente {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
+	
+	
 
 	public List<Reservacion> getReservaciones() {
 		return reservaciones;
 	}
 
+
 	public void setReservaciones(List<Reservacion> reservaciones) {
 		this.reservaciones = reservaciones;
 	}
+
 
 	@Override
 	public String toString() {

@@ -11,13 +11,13 @@
 </head>
 
 <body>
-	<div th:if="${reservacion!=null} and ${reservacion.cobro!=null}">
+	<div th:if="${reservacion!=null} AND ${reservacion.cobro!=null}">
 		<h3> Vehiculo disponible</h3>
-		<h3>Total a pagar</h3>
-		<h3 th:text="${#numbers.formatDecimal(reservacion.cobro.valorTotal,1,2)}"></h3>
+		<h4> total a pagar: </h4>
+		<h4 th:text="${#numbers.formatDecimal(reservacion.cobro.valorTotal,1,2)}"></h4>
 	</div>
-	<!--<div class="alert alert-success" role="alert" th:text="${mensaje}" th:if="${mensaje!=null}"> </div>-->
-	
+	<h1>Pagar vehículo</h1>
+
 </body>
 
 

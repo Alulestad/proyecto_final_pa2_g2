@@ -58,11 +58,16 @@ public class ReservacionController {
 	
 	}
 	
-//	@PutMapping
-//	public String pagoReserva(Model modelo,Reservacion reservacion) {
-//		Reservacion res=this.iReservacionService.insertarReservacionPl(reservacion);
-//		
-//		
-//	}
-	
-}
+//	@PutMapping("/pagarReserva")
+//	public String pagarVehiculo(Model modelo, Reservacion reservacion) {
+//		if(reservacion.getCobro().getTargetaCredito().isEmpty()) {
+//			reservacion.getCobro().setTargetaCredito(null);
+//		}
+//		Reservacion reservaGenerada = this.gestorReservasServiceImpl.reservarVehiculo(reservacion.getVehiculo().getPlaca(),
+//				reservacion.getCliente().getCedula(), reservacion.getFechaInicio(), reservacion.getFechaFin(),
+//				reservacion.getCobro().getTargetaCredito());
+//		modelo.addAttribute("reservaGenerada", reservaGenerada);
+//		return "cliente/mostrarReserva";
+//	
+//}
+	}

@@ -40,14 +40,14 @@ public class Reservacion {
 	@Column(name = "rese_fecha_fin")
 	private LocalDateTime fechaFin;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "rese_id_vehiculo")
 	private Vehiculo vehiculo;
 
 	@OneToOne(mappedBy = "reservacion")
 	private Cobro cobro;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "rese_id_cliente")
 	private Cliente cliente;
 

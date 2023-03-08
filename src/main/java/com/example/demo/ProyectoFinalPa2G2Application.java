@@ -73,7 +73,7 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		myList.forEach(System.out::println);
 		for (Reservacion res:myList) {
 			System.out.println("SQL "+res);
-			System.out.println("SQL Vehiculo"+res.getVehiculo());
+			//System.out.println("SQL Vehiculo"+res.getVehiculo());
 		}
 		
 		
