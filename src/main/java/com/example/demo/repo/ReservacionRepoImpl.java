@@ -44,10 +44,6 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 		this.entityMrese.persist(reservacion);
 		
 	}
-	
-	
-
-
 
 	@Override
 	public boolean verificarReservacionPorCedula_Placa_Fechas(String cedula, String placa,
@@ -107,6 +103,7 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 			
 		return myList;
 	}
+
 
 	@Override
 	public void actualizarReservacionPl(Reservacion reservacion) {

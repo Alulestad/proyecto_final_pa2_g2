@@ -39,8 +39,15 @@ public class Cliente {
 	@Column(name = "clie_contrasenia")
 	private String contrasenia;
 
+
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Reservacion> reservaciones;
+
+
+
+	
+	
+	
 
 	public Integer getId() {
 		return id;

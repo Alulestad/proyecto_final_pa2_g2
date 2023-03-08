@@ -15,8 +15,10 @@ public interface IReservacionRepo {
 	public List<Reservacion>  buscarReservacionPorFecha(LocalDateTime fechaInicio,LocalDateTime fechaFin);
 	public void eliminarReservacionPl(String placa);
 	public void insertarReservacionPl(Reservacion reservacion);
+
 	public boolean verificarReservacionPorCedula_Placa_Fechas(String cedula, String placa, LocalDateTime fechaInicio, LocalDateTime fechaFinal);
 	public List<Reservacion> listaReservacionPorCedula_Placa_Fechas(String cedula, String placa, LocalDateTime fechaInicio, LocalDateTime fechaFinal);
+
 	public void actualizarReservacionPl(Reservacion reservacion);
 	public List<Reservacion>buscarPorVehiculo(Vehiculo vehiculo);
 	public List<Reservacion>reporte(LocalDateTime fechaInicio, LocalDateTime fechaFin);

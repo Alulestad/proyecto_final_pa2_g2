@@ -1,5 +1,8 @@
 package com.example.demo.repo.modelo;
 
+
+import java.math.BigDecimal;
+
 import java.time.LocalDateTime;
 
 import jakarta.persistence.CascadeType;
@@ -47,6 +50,57 @@ public class Reservacion {
 	@ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
 	@JoinColumn(name = "rese_id_cliente")
 	private Cliente cliente;
+
+
+	@Column(name = "rese_subtotal")
+	private BigDecimal subtotal;
+	
+	@Column(name = "rese_iva")
+	private BigDecimal iva;
+	
+	@Column(name = "rese_valor_total")
+	private BigDecimal total;
+
+	@Column(name = "rese_estado")
+	private String estado;
+	
+	
+
+	
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public BigDecimal getIva() {
+		return iva;
+	}
+
+	public void setIva(BigDecimal iva) {
+		this.iva = iva;
+	}
+
+	public BigDecimal getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(BigDecimal subtotal) {
+		this.subtotal = subtotal;
+	}
+
+	
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
 
 	public Integer getId() {
 		return id;

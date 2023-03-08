@@ -49,27 +49,9 @@ public class VehiculoRepositoryImpl implements IVehiculoRepository{
 	public List<Vehiculo> buscarPorMarca_y_modelo(String marca,String modelo) {
 		// TODO Auto-generated method stub
 
-		CriteriaBuilder criteriaBuilder=this.entityManager.getCriteriaBuilder();
-		
-		CriteriaQuery<Vehiculo> criteriaQuery=criteriaBuilder.createQuery(Vehiculo.class);
-		
-		Root<Vehiculo> root=criteriaQuery.from(Vehiculo.class);
-		
-		Predicate predicateFinal=null;
-		
-		Predicate predicate=criteriaBuilder.equal(root.get("marca"), marca);
-		Predicate predicate2=criteriaBuilder.equal(root.get("modelo"), modelo);
-		
-		if(marca!=null & modelo!=null) {
-			predicateFinal=criteriaBuilder.and(predicate,predicate2);
-		}else {
-			predicateFinal=criteriaBuilder.or(predicate,predicate2);
-		}
-		
-		criteriaQuery.select(root).where(predicateFinal);
-		
-		TypedQuery<Vehiculo> myQuery=this.entityManager.createQuery(criteriaQuery);
-		
+		TypedQuery<Vehiculo> myQuery = this.entityManager.createQuery("SELECT v FROM Vehiculo v where v.marca=:datoMarca AND v.modelo=:datoModelo" , Vehiculo.class);
+		myQuery.setParameter("datoMarca", marca);
+		myQuery.setParameter("datoModelo", modelo);
 
 		return myQuery.getResultList();
 	

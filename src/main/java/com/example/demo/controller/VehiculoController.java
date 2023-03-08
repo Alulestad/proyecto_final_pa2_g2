@@ -19,7 +19,9 @@ import com.example.demo.repo.service.IClienteService;
 import com.example.demo.repo.service.IVehiculoService;
 
 @Controller
-@RequestMapping("/principal")
+
+@RequestMapping("/vehiculos")
+
 public class VehiculoController {
 	@Autowired
 	private IVehiculoService iVehiculoService;

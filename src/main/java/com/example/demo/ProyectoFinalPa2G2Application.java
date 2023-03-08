@@ -60,6 +60,7 @@ public class ProyectoFinalPa2G2Application implements CommandLineRunner{
 		
 		*/
 		
+
 		//this.cobroService.insertarCobro("0987654321", new  BigDecimal(20), 3, 1);
 		Cobro cobro=this.cobroService.buscarCobroId(4);
 		System.out.println(cobro);

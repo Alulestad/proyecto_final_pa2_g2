@@ -14,6 +14,9 @@ public class ClienteServiceImpl implements IClienteService {
 	@Autowired
 	private IClienteRepo clienteRepo;
 
+
+	//Defino en todos los ingresos de cliente que sera
+	//de tipo "C"
 	@Override
 	public void agregar(Cliente cliente) {
 		// TODO Auto-generated method stub
@@ -27,6 +30,7 @@ public class ClienteServiceImpl implements IClienteService {
 	}
 
 	@Override
+
 	public void actualizarPorBusquedaDeCedula(Cliente cliente) {
 		this.actualizarPorBusquedaDeCedula(cliente);
 		
@@ -48,7 +52,9 @@ public class ClienteServiceImpl implements IClienteService {
 	public Cliente buscarPorUsuario_contrasenia(String usuario, String contrasenia) {
 		try {
 			return clienteRepo.buscarPorUsuario_contrasenia(usuario, contrasenia);
-		} catch (Exception e) {
+
+		}catch (Exception e) {
+
 			return null;
 		}
 	}

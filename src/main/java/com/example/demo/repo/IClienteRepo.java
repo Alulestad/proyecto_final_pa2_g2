@@ -8,8 +8,10 @@ public interface IClienteRepo {
 	public void insertar(Cliente cliente);
 
 	public void actualizar(Cliente cliente);
+
 	
 	public void actualizarPorBusquedaDeCedula(Cliente cliente);
+
 
 	public Cliente buscarPorCedula(String cedula);
 
