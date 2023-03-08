@@ -38,6 +38,7 @@ public class Cliente {
 	@Column(name = "clie_contrasenia")
 	private String contrasenia;
 
+<<<<<<< HEAD
 	
 	
 	@OneToMany(mappedBy = "cliente")
@@ -108,6 +109,13 @@ public class Cliente {
 	
 	
 	
+=======
+	@Column(name = "clie_tipo")
+	private String tipo;
+	
+
+
+>>>>>>> origin/AA
 
 	
 }
