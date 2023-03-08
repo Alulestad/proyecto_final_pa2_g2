@@ -30,56 +30,61 @@ public class ClienteRepoImpl implements IClienteRepo {
 		this.entityManager.merge(cliente);
 	}
 
-	
-	//Registro 1c (Cliente)
+	@Override
+	public void actualizarPorBusquedaDeCedula(Cliente cliente) {
+		Cliente encontrado=this.buscarPorCedula(cliente.getCedula());
+		cliente.setId(encontrado.getId());
+		this.entityManager.merge(cliente);
+	}
+
+	// Registro 1c (Cliente)
 	@Override
 	public Cliente buscarPorCedula(String cedula) {
 		// TODO Auto-generated method stub
-		TypedQuery<Cliente> myTypedQuery = this.entityManager.createQuery("select c from Cliente c "
-				+ "where c.cedula = :datoCedula", Cliente.class);
+		TypedQuery<Cliente> myTypedQuery = this.entityManager
+				.createQuery("select c from Cliente c " + "where c.cedula = :datoCedula", Cliente.class);
 		myTypedQuery.setParameter("datoCedula", cedula);
-		
-		return myTypedQuery.getSingleResult(); 
+
+		return myTypedQuery.getSingleResult();
 	}
 
 	@Override
 	public void eliminar(String cedula) {
 		// TODO Auto-generated method stub
-		Cliente cliente=this.buscarPorCedula(cedula);
-				this.entityManager.remove(cliente);
+		Cliente cliente = this.buscarPorCedula(cedula);
+		this.entityManager.remove(cliente);
 	}
-	
+
 	@Override
 	public Cliente buscarPorUsuario_contrasenia(String usuario, String contrasenia) {
-		
-		TypedQuery<Cliente> query=this.entityManager.createQuery("select c from Cliente c "
-				+ "where c.usuario=:datoUsuario and c.contrasenia=:datoContasenia",Cliente.class);
+
+		TypedQuery<Cliente> query = this.entityManager.createQuery(
+				"select c from Cliente c " + "where c.usuario=:datoUsuario and c.contrasenia=:datoContasenia",
+				Cliente.class);
 		query.setParameter("datoUsuario", usuario);
 		query.setParameter("datoContasenia", contrasenia);
-		
+
 		return query.getSingleResult();
-	}	
-	
+	}
 
 	@Override
 	public List<Cliente> buscarPorApellido(String apellido) {
-		TypedQuery<Cliente> typedQuery=this.entityManager.createQuery("select c from Cliente c "
-				+ "where c.apellido=:datoApellido",Cliente.class);
-		
+		TypedQuery<Cliente> typedQuery = this.entityManager
+				.createQuery("select c from Cliente c " + "where c.apellido=:datoApellido", Cliente.class);
+
 		typedQuery.setParameter("datoApellido", apellido);
-		
-		
+
 		return typedQuery.getResultList();
 	}
 
 	@Override
 	public List<Cliente> buscarTodos() {
 		// TODO Auto-generated method stub
-				TypedQuery<Cliente> query = this.entityManager.createQuery("SELECT c FROM Cliente c", Cliente.class);
+		TypedQuery<Cliente> query = this.entityManager.createQuery("SELECT c FROM Cliente c", Cliente.class);
 
-				List<Cliente> lista = query.getResultList();
-				lista.forEach(c -> c.getReservaciones().size());
-				return lista;
+		List<Cliente> lista = query.getResultList();
+		lista.forEach(c -> c.getReservaciones().size());
+		return lista;
 	}
 
 }

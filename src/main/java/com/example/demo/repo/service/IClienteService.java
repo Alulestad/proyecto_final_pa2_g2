@@ -9,11 +9,13 @@ public interface IClienteService {
 
 	public void actualizar(Cliente cliente);
 
+	public void actualizarPorBusquedaDeCedula(Cliente cliente);
+
 	public Cliente buscar(String cedula);
-	
+
 	public Cliente buscarPorUsuario_contrasenia(String usuario, String contrasenia);
 
 	public void borrar(String cedula);
-	
+
 	public List<Cliente> buscarPorApellido(String apellido);
 }

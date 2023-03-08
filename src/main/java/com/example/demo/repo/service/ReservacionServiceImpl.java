@@ -52,6 +52,22 @@ public class ReservacionServiceImpl implements IReservacionService {
 		// TODO Auto-generated method stub
 		return this.reservacionRepopl.reporte(fechaInicio, fechaFin);
 	}
+
+	@Override
+	public boolean verificarReservacionPorCedula_Placa_Fechas(String cedula, String placa, LocalDateTime fechaInicio,
+			LocalDateTime fechaFinal) {
+		// TODO Auto-generated method stub
+		return this.verificarReservacionPorCedula_Placa_Fechas(cedula, placa, fechaInicio, fechaFinal);
+	}
+
+	@Override
+	public List<Reservacion> listaReservacionPorCedula_Placa_Fechas(String cedula, String placa,
+			LocalDateTime fechaInicio, LocalDateTime fechaFinal) {
+		// TODO Auto-generated method stub
+		return this.listaReservacionPorCedula_Placa_Fechas(cedula, placa, fechaInicio, fechaFinal);
+	}
+	
+	
 	
 	
 

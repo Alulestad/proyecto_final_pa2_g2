@@ -44,6 +44,69 @@ public class ReservacionRepoImpl implements IReservacionRepo {
 		this.entityMrese.persist(reservacion);
 		
 	}
+	
+	
+
+
+
+	@Override
+	public boolean verificarReservacionPorCedula_Placa_Fechas(String cedula, String placa,
+			LocalDateTime fechaInicio, LocalDateTime fechaFinal) {
+		Query myQuery=this.entityMrese.createNativeQuery(""
+				+ "SELECT * FROM reservacion r "
+				+ "where  :fechaInicio<=r.rese_fecha_inicio "
+				+ "    and r.rese_fecha_fin<=:fechaFinal)"
+				+ "    or (:fechaInicio<=r.rese_fecha_fin"
+				+ "        and :fechaInicio>=r.rese_fecha_inicio)"
+				+ "    or (:fechaFinal<=r.rese_fecha_fin"
+				+ "        and :fechaFinal>=r.rese_fecha_inicio)"
+				+ "    or (:fechaInicio>=r.rese_fecha_inicio "
+				+ "        and r.rese_fecha_fin>=:fechaFinal)"
+				+ "    and r.rese_placa=placa",Reservacion.class);
+		
+		myQuery.setParameter("fechaInicio", fechaInicio);
+		
+		myQuery.setParameter("fechaFinal", fechaFinal);
+		
+		myQuery.setParameter("placa", placa);
+		
+		List<Reservacion> myList=myQuery.getResultList();
+		
+		if (myList.size()==0){
+			return true;
+		}else {
+			return false;
+		}
+		
+		
+	}
+
+	
+	@Override
+	public List<Reservacion> listaReservacionPorCedula_Placa_Fechas(String cedula, String placa,
+			LocalDateTime fechaInicio, LocalDateTime fechaFinal) {
+			Query myQuery=this.entityMrese.createNativeQuery(""
+					+ "SELECT * FROM reservacion r "
+					+ "where  :fechaInicio<=r.rese_fecha_inicio "
+					+ "    and r.rese_fecha_fin<=:fechaFinal)"
+					+ "    or (:fechaInicio<=r.rese_fecha_fin"
+					+ "        and :fechaInicio>=r.rese_fecha_inicio)"
+					+ "    or (:fechaFinal<=r.rese_fecha_fin"
+					+ "        and :fechaFinal>=r.rese_fecha_inicio)"
+					+ "    or (:fechaInicio>=r.rese_fecha_inicio "
+					+ "        and r.rese_fecha_fin>=:fechaFinal)"
+					+ "    and r.rese_placa=placa",Reservacion.class);
+			
+			myQuery.setParameter("fechaInicio", fechaInicio);
+			
+			myQuery.setParameter("fechaFinal", fechaFinal);
+			
+			myQuery.setParameter("placa", placa);
+			
+			List<Reservacion> myList=myQuery.getResultList();
+			
+		return myList;
+	}
 
 	@Override
 	public void actualizarReservacionPl(Reservacion reservacion) {

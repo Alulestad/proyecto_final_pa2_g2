@@ -27,6 +27,12 @@ public class ClienteServiceImpl implements IClienteService {
 	}
 
 	@Override
+	public void actualizarPorBusquedaDeCedula(Cliente cliente) {
+		this.actualizarPorBusquedaDeCedula(cliente);
+		
+	}
+
+	@Override
 	public Cliente buscar(String cedula) {
 		// TODO Auto-generated method stub
 		return this.clienteRepo.buscarPorCedula(cedula);
@@ -42,7 +48,7 @@ public class ClienteServiceImpl implements IClienteService {
 	public Cliente buscarPorUsuario_contrasenia(String usuario, String contrasenia) {
 		try {
 			return clienteRepo.buscarPorUsuario_contrasenia(usuario, contrasenia);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}
