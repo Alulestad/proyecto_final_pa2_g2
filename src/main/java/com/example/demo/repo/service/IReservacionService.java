@@ -20,15 +20,15 @@ public interface IReservacionService {
 	public void insertarReservacionPl(Reservacion reservacion);
 	public void actualizarReservacionPl(Reservacion reservacion);
 
-<<<<<<< HEAD
+
 
 	
 	
 	public void reservar(String placa, String cedula, LocalDateTime fechaInicio, LocalDateTime fechaFin);
 	
 
-=======
+
 	public boolean verificarDisponibilidad(String placa, LocalDateTime fechaInicio, LocalDateTime fechaFin);
 	
->>>>>>> origin/AL
+
 }

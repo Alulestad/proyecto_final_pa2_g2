@@ -165,16 +165,13 @@ public class Reservacion {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-<<<<<<< HEAD
+
 
 	@Override
 	public String toString() {
 		return "Reservacion [id=" + id + ", placa=" + placa + ", cedula=" + cedula + ", fechaInicio=" + fechaInicio
 				+ ", fechaFin=" + fechaFin + "]";
 	}
-=======
-	
-	
->>>>>>> origin/AL
+
 
 }

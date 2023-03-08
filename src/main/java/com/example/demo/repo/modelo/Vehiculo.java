@@ -132,13 +132,7 @@ public class Vehiculo {
 		this.valorDia = valorDia;
 	}
 
-	public List<Reservacion> getReservaciones() {
-		return reservaciones;
-	}
 
-	public void setReservaciones(List<Reservacion> reservaciones) {
-		this.reservaciones = reservaciones;
-	}
 
 	@Override
 	public String toString() {
