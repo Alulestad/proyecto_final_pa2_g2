@@ -14,7 +14,9 @@ import com.example.demo.modelo.DTO.ClienteDTO;
 import com.example.demo.modelo.DTO.ReservaDTO;
 import com.example.demo.modelo.DTO.VehiculoDTO;
 import com.example.demo.repo.modelo.Empleado;
+import com.example.demo.repo.modelo.Usuario;
 import com.example.demo.repo.service.IEmpleadoService;
+import com.example.demo.repo.service.IUsuarioService;
 
 
 @Controller
@@ -23,6 +25,9 @@ public class EmpleadoController {
 	
 	@Autowired
 	private IEmpleadoService empleadoService;
+	
+	@Autowired
+	private IUsuarioService iUsuarioService;
 	
 	@GetMapping("")
 	public String paginaInicio() {
@@ -34,9 +39,20 @@ public class EmpleadoController {
 		return "Empleado/vistaEmpleadoInsertar";
 	}
 	
+	@GetMapping("/registrarUsuario")
+	public String registrarUsuario(Usuario usuario) {
+		return "Empleado/vistaUsuarioInsertar";
+	}
+	
 	@PostMapping("/insertado")
 	public String insertarPersona(Empleado empleado) {
 		this.empleadoService.insertarEmpleado(empleado);
+		return "redirect:/empleado";
+	}
+	
+	@PostMapping("/insertadoUsuario")
+	public String insertarUsuario(Usuario usuario) {
+		this.iUsuarioService.insertar(usuario);
 		return "redirect:/empleado";
 	}
 ////////////////////////////////////////////////REPORTEVIP//////////
