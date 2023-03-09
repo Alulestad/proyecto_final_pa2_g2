@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<form th:action="@{/clientes/reservacion/insertar}" th:object="${reservacion}" th:method="POST">
+		<table>
+
+			<thead>
+				
+				<tr>
+					<!--form th:action="@{/clientes/vehiculo/buscarFiltrados}"-->
+					<div>
+						<label> Placa: </label>
+					</div>
+					<div>
+						<input type="text" name="placa" class="form-control" id="placa" th:value="${placa}"
+							placeholder="Ingrese la placa" required>
+					</div>
+					<div>
+						<label> Cédula: </label>
+					</div>
+					<div>
+						<input type="text" name="cedula" class="form-control" id="cedula" th:value="${cedula}"
+							placeholder="Ingrese su cédula" required>
+					</div>
+					<div>
+						<label> Fecha de Inicio: </label>
+					</div>
+					<div>
+						<input type="datetime-local" name="fechaInicio" class="form-control" id="fechaInicio"
+							th:value="${fechaInicio}" required>
+					</div>
+					<div>
+						<label> Fecha de Fin: </label>
+					</div>
+					<div>
+						<input type="datetime-local" name="fechaFin" class="form-control" id="fechaFin"
+							th:value="${fechaFin}" required>
+					</div>
+					<div>
+						<input type="submit" value="GuardarR">
+					</div>
+				
+				</tr>
+			</thead>
+
+		</table>
+	</form>
+
+</body>
+
+</html>
